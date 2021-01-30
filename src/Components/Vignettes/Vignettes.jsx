@@ -65,9 +65,9 @@ export default function Vignettes() {
               <p><strong>Dernière visite:</strong> {pays.last_visited}</p>
                 <p><strong>Nombre de visites:</strong> {pays.times_visited}</p>
                 <p><strong>Villes visitées:</strong> </p>
-                <ul>
+                <ul key={id}>
                     {pays.cities.map((city, id) => (
-                        <li className={styles.cityListName}>{city.name} key={id}</li>
+                        <li className={styles.cityListName}>{city.name}</li>
                     ))}
                 </ul>
           </div>

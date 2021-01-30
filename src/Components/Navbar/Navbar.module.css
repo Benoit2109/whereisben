@@ -1,0 +1,43 @@
+.NavbarContainer{
+    font-family: var(--main-font-title);
+    height:10vh;
+    background-image: url(../../Assets/globe.png);
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NavbarMenu{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 2rem; 
+}
+
+.NavbarMenu li{
+    margin:1rem;
+    color:white;
+    font-weight:800;
+}
+
+h2{
+    margin: 0;
+    color: White;
+
+}
+
+
+
+@media screen and (min-width: 768px){
+    .NavbarContainer{
+        
+        flex-direction: row;
+    }   
+
+    .NavbarMenu{
+        
+        flex-direction: row;
+        
+    }
+}

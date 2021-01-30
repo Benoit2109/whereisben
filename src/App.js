@@ -1,10 +1,11 @@
-import Navbar from "./Components/Navbar";
+import React from 'react';
+import Root from "./Components/Router/Router";
 
 
 function App() {
   return (
     <div>
-      <Navbar />
+      <Root />
     </div>
   );
 }

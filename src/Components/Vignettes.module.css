@@ -1,0 +1,20 @@
+.vignetteContainer {
+  width: 90vw;
+  margin-top: 1rem;
+}
+
+.vignetteIllustration {
+}
+
+.vignetteInfos {
+}
+
+.cityListName{
+    list-style: none;
+}
+
+@media screen and (min-width: 768px) {
+  .vignetteContainer {
+    width: 90vw;
+  }
+} ;

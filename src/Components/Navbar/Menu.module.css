@@ -6,6 +6,7 @@
     position: absolute;
     top: 1.5rem;
     width: 100%;
+    z-index: 1000;
 }
 
 .menuButton{
@@ -36,7 +37,7 @@
     opacity:1;
     background-color: red;
     height: fit-content;
-    transform:translateY(2rem);
+    transform:translateY(0.6rem);
     padding: 1rem;
 }
 

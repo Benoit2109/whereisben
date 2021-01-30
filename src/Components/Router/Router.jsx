@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import MainLayout from "../Layout/mainLayout";
-import Map from "../Map";
-import VideoPlayer from "../VideoPlayer";
+import Exploring from "../Views/Exploring/Exploring";
+import Homepage from "../Views/Homepage/Homepage";
 
 
 const Root = () => (
   <Router>
     <Switch>
-      <MainLayout exact path='/' component={VideoPlayer} />
-      <MainLayout exact path='/exploring' component={Map} />
+      <MainLayout exact path='/' component={Homepage} />
+      <MainLayout exact path='/exploring' component={Exploring} />
     </Switch>
   </Router>
 );

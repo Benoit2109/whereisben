@@ -15,13 +15,13 @@ export default function Menu() {
         MENU
       </button>
       <ul className={`${styles.menuList} ${active && styles.menuOpen}`}>
-        <li className={styles.menuListItem}>
+        <li className={styles.menuListItem} onClick={openMenu}>
           <Link className={styles.menuLink} to='/'>Homepage</Link>
         </li>
-        <li className={styles.menuListItem}>
+        <li className={styles.menuListItem} onClick={openMenu}>
           <Link className={styles.menuLink} to='/exploring'>Exploring countries</Link>
         </li>
-        <li className={styles.menuListItem}>
+        <li className={styles.menuListItem} onClick={openMenu}>
           <Link className={styles.menuLink} to='/addcountry'>Add new country</Link>
         </li>
       </ul>

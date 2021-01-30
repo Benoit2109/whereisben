@@ -1,0 +1,47 @@
+.menuWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    top: 1.5rem;
+    width: 100%;
+}
+
+.menuButton{
+    display: flex;
+    align-items: center;
+    outline: none;
+    border: 1px solid blue;
+    margin-right: 2rem;
+    background-color: white;
+    height: 40px;
+    width: auto;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.menuLink{
+    text-decoration: none; 
+}
+
+.menuList{
+    opacity:0;
+    transition: all 0.25s ease-in-out;
+    height:0;
+    
+}
+
+.menuOpen{
+    opacity:1;
+    background-color: red;
+    height: fit-content;
+    transform:translateY(2rem);
+    padding: 1rem;
+}
+
+.menuListItem{
+    list-style: none;
+    transition: all 0.2s linear;
+    padding: 0.5rem;
+}

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'CarroisGothic';
+    src: url(../../Assets/CarroisGothic-Regular.ttf) format('truetype');
+  }
+
+:Root{
+  /* Fonts */
+    --main-font-title: 'CarroisGothic';
+
+  /* Color */
+
+
+}

@@ -77,12 +77,13 @@ export default function AddCity() {
     // history.push("/exploring");
   };
   return (
-    <div>
-      <div className={styles.formContainer}>
-        <form>
+    <div className={styles.addcityWrapper}>
+      <div className={styles.addcityformContainer}>
+        <form className={styles.addcityform}>
           <label htmlFor="country">
             Pays:
             <input
+            className={styles.addcityformInput}
               type="text"
               name="name"
               placeholder="Pays"
@@ -90,9 +91,37 @@ export default function AddCity() {
               onChange={onChangecountry}
             />
           </label>
+          <label htmlFor="city">
+            Ville visitée:
+            <input
+            className={styles.addcityformInput}
+              type="text"
+              name="city"
+              placeholder="Nom de la ville"
+              value={newcity.name}
+              onChange={onChangecity}
+            />
+            <input
+            className={styles.addcityformInput}
+              type="text"
+              name="city_latitude"
+              placeholder="Latitude"
+              value={newcity.latitude}
+              onChange={onChangecity}
+            />
+            <input
+            className={styles.addcityformInput}
+              type="text"
+              name="city_longitude"
+              placeholder="Longitude"
+              value={newcity.longitude}
+              onChange={onChangecity}
+            />
+          </label>
           <label htmlFor="photos">
             Photos:
             <input
+            className={styles.addcityformInput}
               type="text"
               name="photos"
               placeholder="Url de la photo"
@@ -101,61 +130,41 @@ export default function AddCity() {
             />
           </label>
           <label htmlFor="last_visited">
-            Année de la dernière visite:
+            Dernière visite: 
             <input
+            className={styles.addcityformInput}
               type="number"
               name="last_visited"
-              placeholder="ex:2017"
+              placeholder="ex: 2017"
               value={newcountry.last_visited}
               onChange={onChangecountry}
             />
           </label>
           <label htmlFor="times_visited">
-            Nombre de visites:
+            Nbre de visites:
             <input
+            className={styles.addcityformInput}
               type="number"
               name="times_visited"
-              placeholder="ex:5"
+              placeholder="ex: 5"
               value={newcountry.times_visited}
               onChange={onChangecountry}
             />
           </label>
-          <label htmlFor="city">
-            Ville visitée:
-            <input
-              type="text"
-              name="city"
-              placeholder="nom de la ville"
-              value={newcity.name}
-              onChange={onChangecity}
-            />
-            <input
-              type="text"
-              name="city_latitude"
-              placeholder="latitude"
-              value={newcity.latitude}
-              onChange={onChangecity}
-            />
-            <input
-              type="text"
-              name="city_longitude"
-              placeholder="longitude"
-              value={newcity.longitude}
-              onChange={onChangecity}
-            />
-          </label>
-          <label htmlFor="submit">
+          
+          <label htmlFor="submit" className={styles.addcitybuttoncontainer}>
             <input
               type="submit"
               name="submmit"
               onSubmit={onSubmit}
               value="Envoyer"
+              className={styles.addcitybutton}
             />
           </label>
         </form>
       </div>
-      <Link to="/exploring">
-        <button>afficher sur la carte</button>
+      <Link to="/exploring" className={styles.addcityviewButtoncontainer}>
+        <button className={styles.addcityviewButton}>Afficher sur la carte</button>
       </Link>
     </div>
   );

@@ -1,8 +1,14 @@
 import React from "react";
-
+import { Icon } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import styles from "./Map.module.css";
+import cityIcon from '../../Assets/pin.svg'
+
+const cityPin = new Icon({
+  iconUrl: cityIcon,
+  iconSize: [60, 60],
+});
 
 export default function Map() {
   const pays = [
@@ -69,7 +75,7 @@ export default function Map() {
           url="https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=33a48696f2324df5807babc5240f8605"
         />
         {pays.map((pays) => pays.cities.map((city) => (
-          <Marker position={[city.latitude, city.longitude]} key={city.name}>
+          <Marker position={[city.latitude, city.longitude]} key={city.name} icon={cityPin}>
             <Popup>
               {city.name}
             </Popup>

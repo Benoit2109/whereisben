@@ -1,4 +1,87 @@
-.formContainer{
+.addcityWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  max-width: 100vw;
+  height: 82vh;
+  background-image: url(../../Assets/Planisphere-Mural_OriginalMap.jpg);
+}
+
+.addcityformContainer {
+  display: flex;
+  width: 95vw;
+  background-color: #dfdfe0;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.addcityform {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.addcityform label {
+  padding-top: 1rem;
+  margin-right: 1rem;
+  max-width: 100%;
+}
+
+.addcityformInput {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-left: 1rem;
+  background: transparent;
+}
+
+.addcitybuttoncontainer {
+  align-self: center;
+  margin: 1rem;
+}
+
+.addcitybutton {
+  border: none;
+  background-color: var(--main-color-navbar);
+  color: white;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+}
+
+.addcityviewButtoncontainer {
+  align-self: center;
+  margin: 1rem;
+}
+
+.addcityviewButton {
+  border: none;
+  cursor: pointer;
+  background-color: var(--main-color-navbar);
+  color: white;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .addcityWrapper {
+    height: 70vh;
+    width: 60vw;
+    left: 0;
+    transform: translateX(32%);
+  }
+
+  .addcityformContainer {
+    width: 45vw;
+  }
+
+  .addcityform {
     display: flex;
-    flex-direction: 'column';
+    flex-direction: column;
+    width: 90%;
+    margin-left: 1rem;
+  }
 }

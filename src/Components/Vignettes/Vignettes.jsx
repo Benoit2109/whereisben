@@ -62,7 +62,6 @@ export default function Vignettes() {
   ];
 
   return (
-<<<<<<< HEAD:src/Components/Vignettes.jsx
     <div className={styles.vignettesWrapper}>
       {pays.map((pays, id) =>
         pays.cities.map((city, id) => (
@@ -87,26 +86,6 @@ export default function Vignettes() {
                 <strong>Nombre de visites:</strong> {pays.times_visited}
               </p>
             </div>
-=======
-    <div>
-      {pays.map((pays, id) => (
-        <div className={styles.vignetteContainer} key={id}>
-          <img
-            className={styles.vignetteIllustration}
-            src={pays.photos}
-            alt={pays.cities.name}
-          />
-          <div className={styles.vignetteInfos}>
-              <p><strong>Pays:</strong> {pays.name}</p>
-              <p><strong>Dernière visite:</strong> {pays.last_visited}</p>
-                <p><strong>Nombre de visites:</strong> {pays.times_visited}</p>
-                <p><strong>Villes visitées:</strong> </p>
-                <ul key={id}>
-                    {pays.cities.map((city, id) => (
-                        <li className={styles.cityListName}>{city.name}</li>
-                    ))}
-                </ul>
->>>>>>> master:src/Components/Vignettes/Vignettes.jsx
           </div>
         ))
       )}

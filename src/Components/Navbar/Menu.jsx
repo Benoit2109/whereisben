@@ -22,7 +22,7 @@ export default function Menu() {
           <Link className={styles.menuLink} to='/exploring'><strong>Exploring countries</strong></Link>
         </li>
         <li className={styles.menuListItem} onClick={openMenu}>
-          <Link className={styles.menuLink} to='/addcountry'><strong>Add new country</strong></Link>
+          <Link className={styles.menuLink} to='/addcity'>Add new country</Link>
         </li>
       </ul>
     </div>

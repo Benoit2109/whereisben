@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from '../../Map/Map';
-import Vignettes from '../../Vignettes';
+import Vignettes from '../../Vignettes/Vignettes';
 
 export default function Exploring(){
     return (

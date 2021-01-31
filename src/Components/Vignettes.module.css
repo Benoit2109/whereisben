@@ -1,12 +1,27 @@
+.vignettesWrapper{
+  overflow: scroll;
+  max-height:45 vh;
+}
+
 .vignetteContainer {
   width: 90vw;
   margin-top: 1rem;
+  background-color: #DFDFE0;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  border-radius: 5px;
 }
 
 .vignetteIllustration {
+  max-width: 90%;
+  margin-top: 0.5rem;
+  position: center;
 }
 
 .vignetteInfos {
+  align-self: flex-start;
+  margin-left: 1rem;
 }
 
 .cityListName{
@@ -15,6 +30,12 @@
 
 @media screen and (min-width: 768px) {
   .vignetteContainer {
-    width: 90vw;
+    width: 23vw;
+    margin-left: 1rem;
+    
+  }
+
+  .vignettesWrapper{
+    max-height: 90vh;
   }
 } ;

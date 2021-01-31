@@ -1,12 +1,12 @@
 .mapContainer{
     height: 45vh;
     width: auto;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 @media screen and (min-width: 768px){
     .mapContainer{
-        width:80vw;
-        height: 85vh;
+        width:75vw;
+        height: 88vh;
     }
 }

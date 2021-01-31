@@ -1,0 +1,15 @@
+.exploringdisplay{
+    display:flex;
+    flex-direction:column;
+}
+.exploringcenter{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+@media screen and (min-width: 768px) {
+    .exploringdisplay {
+      flex-direction: row;
+    }
+  } ;

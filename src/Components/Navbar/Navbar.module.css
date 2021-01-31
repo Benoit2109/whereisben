@@ -1,7 +1,7 @@
 .NavbarContainer{
     font-family: var(--main-font-title);
     height:10vh;
-    background-image: url(../../Assets/globe.png);
+    background-color: var(--main-color-navbar);
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -22,7 +22,7 @@
 }
 
 h2{
-    margin: 0;
+    margin-left: 1rem;
     color: White;
 
 }
@@ -39,5 +39,9 @@ h2{
         
         flex-direction: row;
         
+    }
+
+    h2{
+        font-size: 2rem;
     }
 }

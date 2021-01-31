@@ -61,6 +61,8 @@ export default function Map() {
         center={[51.505, -0.09]}
         zoom={3}
         scrollWheelZoom={true}
+        minZoom={2}
+        draggable={false}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

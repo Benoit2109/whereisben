@@ -16,10 +16,10 @@ export default function Menu() {
       </button>
       <ul className={`${styles.menuList} ${active && styles.menuOpen}`}>
         <li className={styles.menuListItem} onClick={openMenu}>
-          <Link className={styles.menuLink} to='/'>Homepage</Link>
+          <Link className={styles.menuLink} to='/'><strong>Homepage</strong></Link>
         </li>
         <li className={styles.menuListItem} onClick={openMenu}>
-          <Link className={styles.menuLink} to='/exploring'>Exploring countries</Link>
+          <Link className={styles.menuLink} to='/exploring'><strong>Exploring countries</strong></Link>
         </li>
         <li className={styles.menuListItem} onClick={openMenu}>
           <Link className={styles.menuLink} to='/addcity'>Add new country</Link>

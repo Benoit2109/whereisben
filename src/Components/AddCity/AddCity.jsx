@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import axios from "axios";
 import styles from "./AddCity.module.css";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 
 const pays = [
   {
@@ -62,6 +63,19 @@ export default function AddCity() {
     photos: "",
     cities: { newcity },
   });
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://maps.googleapis.com/maps/api/geocode/json?address=${newcity.name}&sensor=false`
+      )
+      .then((res) => {
+        const result = res.data;
+        console.log(result);
+      });
+    
+    
+  }, [newcity.name]);
 
   const onChangecity = (e) => {
     setNewcity({ [e.target.name]: e.target.value });

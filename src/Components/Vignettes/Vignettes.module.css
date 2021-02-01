@@ -6,7 +6,7 @@
 .vignetteContainer {
   width: 90vw;
   margin-top: 1rem;
-  background-color: #DFDFE0;
+  background-color: var(--main-color-grey);
   display:flex;
   flex-direction:column;
   align-items: center;
@@ -30,12 +30,13 @@
 
 @media screen and (min-width: 768px) {
   .vignetteContainer {
-    width: 23vw;
+    width: 22vw;
     margin-left: 1rem;
     
   }
 
   .vignettesWrapper{
     max-height: 90vh;
+    max-width: 25vw;
   }
 } ;

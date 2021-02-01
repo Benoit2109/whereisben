@@ -51,45 +51,29 @@ const pays = [
 
 export default function AddCity() {
   // const history = useHistory();
+  const [cityList, setCityList] = useState({});
   const [newcity, setNewcity] = useState({
-    name: "",
-    latitude: "",
-    longitude: "",
-  });
-  const [newcountry, setNewcountry] = useState({
     name: "",
     last_visited: "",
     times_visited: "",
     photos: "",
-    cities: { newcity },
+    cities: [{ name: "", latitude: "", longitude: "" }],
   });
+  
 
   useEffect(() => {
-    axios
-      .get(
-        `http://maps.googleapis.com/maps/api/geocode/json?address=${newcity.name}&sensor=false`
-      )
-      .then((res) => {
-        const result = res.data;
-        console.log(result);
-      });
-    
-    
-  }, [newcity.name]);
+    setCityList(pays);
+  }, []);
 
   const onChangecity = (e) => {
-    setNewcity({ [e.target.name]: e.target.value });
-  };
-
-  const onChangecountry = (e) => {
-    setNewcountry({ [e.target.name]: e.target.value });
+    setNewcity({ ...newcity, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    pays.push(newcountry);
-    console.log(pays);
+    setCityList(...cityList, newcity);
+    console.log(cityList);
     // axios.post(process.env.REACT_APP_API_BDD).then((res) => res.data);
 
     // history.push("/exploring");
@@ -105,8 +89,8 @@ export default function AddCity() {
               type="text"
               name="name"
               placeholder="Pays"
-              value={newcountry.name}
-              onChange={onChangecountry}
+              value={newcity.name}
+              onChange={onChangecity}
             >
               <option value="France" selected="selected">
                 France{" "}
@@ -356,7 +340,7 @@ export default function AddCity() {
               type="text"
               name="city"
               placeholder="Nom de la ville"
-              value={newcity.name}
+              value={newcity.cities[0].name}
               onChange={onChangecity}
             />
             <input
@@ -364,7 +348,7 @@ export default function AddCity() {
               type="text"
               name="city_latitude"
               placeholder="Latitude"
-              value={newcity.latitude}
+              value={newcity.cities.latitude}
               onChange={onChangecity}
             />
             <input
@@ -372,7 +356,7 @@ export default function AddCity() {
               type="text"
               name="city_longitude"
               placeholder="Longitude"
-              value={newcity.longitude}
+              value={newcity.cities.longitude}
               onChange={onChangecity}
             />
           </label>
@@ -380,11 +364,12 @@ export default function AddCity() {
             Photos:
             <input
               className={styles.addcityformInput}
-              type="text"
+              type="file"
+              accept='image/*'
               name="photos"
               placeholder="Url de la photo"
-              value={newcountry.photos}
-              onChange={onChangecountry}
+              value={newcity.photos}
+              onChange={onChangecity}
             />
           </label>
           <label htmlFor="last_visited">
@@ -394,8 +379,8 @@ export default function AddCity() {
               type="number"
               name="last_visited"
               placeholder="ex: 2017"
-              value={newcountry.last_visited}
-              onChange={onChangecountry}
+              value={newcity.last_visited}
+              onChange={onChangecity}
             />
           </label>
           <label htmlFor="times_visited">
@@ -405,8 +390,8 @@ export default function AddCity() {
               type="number"
               name="times_visited"
               placeholder="ex: 5"
-              value={newcountry.times_visited}
-              onChange={onChangecountry}
+              value={newcity.times_visited}
+              onChange={onChangecity}
             />
           </label>
 

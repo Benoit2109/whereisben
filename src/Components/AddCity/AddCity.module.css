@@ -12,7 +12,7 @@
 .addcityformContainer {
   display: flex;
   width: 95vw;
-  background-color: #dfdfe0;
+  background-color: var(--main-color-grey);
   border-radius: 5px;
   justify-content: center;
 }

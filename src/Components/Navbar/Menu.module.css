@@ -29,11 +29,11 @@
 }
 
 .menuList{
-    opacity:0;
+    display:none;
     transition: all 0.25s ease-in-out;
     height:0;
     border-radius: 0 0 5px 5px;
-    
+    transform:translateX(8rem);
 }
 
 .menuOpen{

@@ -21,6 +21,7 @@
     width: auto;
     padding: 0.5rem;
     border-radius: 5px;
+    cursor:pointer;
 }
 
 .menuLink{
@@ -33,7 +34,7 @@
     transition: all 0.25s ease-in-out;
     height:0;
     border-radius: 0 0 5px 5px;
-    
+    transform:translateX(8rem);
 }
 
 .menuOpen{

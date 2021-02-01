@@ -12,7 +12,7 @@
 .addcityformContainer {
   display: flex;
   width: 95vw;
-  background-color: #dfdfe0;
+  background-color: var(--main-color-grey);
   border-radius: 5px;
   justify-content: center;
 }
@@ -49,6 +49,7 @@
   border-radius: 5px;
   font-size: 1.3rem;
   padding: 0.5rem;
+  cursor: pointer;
 }
 
 .addcityviewButtoncontainer {

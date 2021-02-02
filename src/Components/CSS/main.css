@@ -16,6 +16,19 @@
   margin:0;
 }
 
+a{
+  text-decoration: none;
+  cursor:pointer;
+}
+
+input{
+  outline: none;
+}
+
+button{
+  outline:none;
+}
+
 body{
   margin:0;
   font-family: var(--main-font-title);

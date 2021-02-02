@@ -3,8 +3,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Autocomplete from "../Autocomplete/Autocomplete";
 
 export default function AddCity() {
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
   const [newcity, setNewcity] = useState({
     country_name: "",
     city_name: "",
@@ -14,8 +17,6 @@ export default function AddCity() {
     last_visited: "",
     nb_visited: "",
   });
-
-  
 
   const onChangecity = (e) => {
     setNewcity({ ...newcity, [e.target.name]: e.target.value });
@@ -306,7 +307,7 @@ export default function AddCity() {
               type="text"
               name="latitude"
               placeholder="Latitude"
-              value={newcity.latitude}
+              value={latitude}
               onChange={onChangecity}
             />
           </label>
@@ -316,7 +317,7 @@ export default function AddCity() {
               type="text"
               name="longitude"
               placeholder="Longitude"
-              value={newcity.longitude}
+              value={longitude}
               onChange={onChangecity}
             />
           </label>
@@ -365,6 +366,13 @@ export default function AddCity() {
             />
           </label>
         </form>
+        <Autocomplete
+          newcity={newcity}
+          setLatitude={setLatitude}
+          setLongitude={setLongitude}
+          latitude={latitude}
+          longitude={longitude}
+        />
       </div>
       <Link to="/exploring" className={styles.addcityviewButtoncontainer}>
         <button className={styles.addcityviewButton}>

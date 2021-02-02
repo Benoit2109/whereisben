@@ -7,7 +7,6 @@
     top: 1.5rem;
     width: 100%;
     z-index: 1000;
-    
 }
 
 .menuButton{
@@ -24,6 +23,11 @@
     cursor:pointer;
 }
 
+.menuGlobe{
+    height: 150px;
+    width: 100px;
+}
+
 .menuLink{
     text-decoration: none; 
     color:white;
@@ -31,14 +35,15 @@
 
 .menuList{
     opacity:0;
+    visibility: hidden;
     transition: all 0.25s ease-in-out;
     height:0;
     border-radius: 0 0 5px 5px;
-    transform:translateX(8rem);
 }
 
 .menuOpen{
     opacity:1;
+    visibility:visible;
     background-color: var(--main-color-navbar);
     height: fit-content;
     padding: 1rem;

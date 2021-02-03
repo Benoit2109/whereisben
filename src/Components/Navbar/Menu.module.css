@@ -15,7 +15,7 @@
     outline: none;
     border: none;
     margin-right: 1rem;
-    background-color: white;
+    background-color: transparent;
     height: 40px;
     width: auto;
     padding: 0.5rem;
@@ -24,8 +24,8 @@
 }
 
 .menuGlobe{
-    height: 150px;
-    width: 100px;
+    height: 40px;
+    width: 40px;
 }
 
 .menuLink{
@@ -66,5 +66,10 @@
 
     .menuButton {
         margin-right: 2rem;
+    }
+
+    .menuGlobe{
+        height: 50px;
+        width: 50px;
     }
 }

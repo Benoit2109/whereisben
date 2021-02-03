@@ -2,8 +2,8 @@ import React, { createContext, useState } from 'react';
 import childrenPropType from '../propTypes/ChildrenProptypes';
 
 export const CitiesContext = createContext({
-  datesList: {},
-  setDatesList: () => {},
+  cities: [],
+  setCities: () => [],
 });
 
 CitiesContext.displayName = 'CitiesContext';

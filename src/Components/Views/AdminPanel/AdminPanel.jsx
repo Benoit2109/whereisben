@@ -27,6 +27,7 @@ function AdminPanel() {
         longitude={longitude}
         setLongitude={setLongitude}
         newcity={newcity}
+        setNewcity={setNewcity}
       />
       <Autocomplete
         className={styles.Admin_Fetch_button}

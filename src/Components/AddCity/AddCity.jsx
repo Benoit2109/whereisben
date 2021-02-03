@@ -16,11 +16,11 @@ export default function AddCity({
     setNewcity({ ...newcity, [e.target.name]: e.target.value });
   };
 
-  function onSubmit(e) {
+  const onSubmit=(e)=> {
     e.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_API_BDD}/cities/newcity`, newcity)
+      .post(`${process.env.REACT_APP_API_BDD}cities/newcity`, newcity)
       .then((res) => res.data)
       .then((res) => {
         alert("La ville à bien été ajouté !");

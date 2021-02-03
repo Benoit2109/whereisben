@@ -1,21 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
+import PropTypes from 'prop-types';
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
-import Autocomplete from "../Autocomplete/Autocomplete";
 
-export default function AddCity() {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [newcity, setNewcity] = useState({
-    country_name: "",
-    city_name: "",
-    latitude: "",
-    longitude: "",
-    photo: "",
-    last_visited: "",
-    nb_visited: "",
-  });
+
+export default function AddCity({latitude, longitude, setLatitude, setLongitude, newcity, setNewcity}) {
+
 
   const onChangecity = (e) => {
     setNewcity({ ...newcity, [e.target.name]: e.target.value });
@@ -127,13 +118,6 @@ export default function AddCity() {
         </form>
         
       </div>
-      <Autocomplete
-          newcity={newcity}
-          setLatitude={setLatitude}
-          setLongitude={setLongitude}
-          latitude={latitude}
-          longitude={longitude}
-        />
       <Link to="/exploring" className={styles.addcityviewButtoncontainer}>
         <button className={styles.addcityviewButton}>
           Afficher sur la carte
@@ -141,4 +125,14 @@ export default function AddCity() {
       </Link>
     </div>
   );
+}
+
+AddCity.Proptype = {
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
+  setLongitude: PropTypes.func.isRequired,
+  setLatitude: PropTypes.func.isRequired,
+  newcity: PropTypes.object.isRequired,
+  setNewcity: PropTypes.func.isRequired,
+  
 }

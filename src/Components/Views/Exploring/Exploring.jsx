@@ -8,26 +8,28 @@ import styles from "./Exploring.module.css";
 export default function Exploring() {
   const [citysearch, setCitysearch] = useState("");
   const { cities } = useContext(CitiesContext);
-  const [cityLoop, setcityLoop] = useState("");
+  const [cityLoop, setcityLoop] = useState([]);
+
+  const FilterCity = cityLoop
+    .filter(
+      (e) =>
+        e.city_name.includes(citysearch) || e.country_name.includes(citysearch)
+    )
+    .map((city, index) => <Vignettes key={city.id} city={city} alt={index} />);
 
   useEffect(() => {
-    setcityLoop(cities)
-  },[])
+    console.log("cities", cities);
+    setcityLoop(cities);
+    console.log(cityLoop);
+  }, []);
+  
   return (
     <div className={styles.exploringdisplay}>
       <Map />
       <div className={styles.exploringcenter}>
         <SearchBar citysearch={citysearch} setCitysearch={setCitysearch} />
-        {cityLoop.length > 0 ? (
-          cityLoop
-            .filter(
-              (e) =>
-                e.city_name.includes(citysearch) ||
-                e.country_name.includes(citysearch)
-            )
-            .map((city, index) => (
-              <Vignettes key={city.id} city={city} alt={index} />
-            ))
+        {FilterCity.length > 0 ? (
+          FilterCity
         ) : (
           <p className={styles.nocities}>
             Nous n'avons pas trouvé de ville(s) correspondant à votre recherche.

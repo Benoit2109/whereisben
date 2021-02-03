@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Menu.module.css";
 
-import globe from "../../Assets/globeBlack_menu.png"
+import globe from "../../Assets/globe_menu.png"
 
 export default function Menu() {
   const [active, setActive] = useState(false);

@@ -1,0 +1,17 @@
+.auto_button{
+    position:relative;
+    transform:translateX(5rem)translateY(-15rem);
+    cursor: pointer;
+    background-color: var(--main-color-navbar);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.4rem;
+    font-size: 1rem;
+}
+
+@media screen and (min-width: 768px){
+    .auto_button{
+        transform:translateX(5rem)translateY(-15rem);
+    } 
+}

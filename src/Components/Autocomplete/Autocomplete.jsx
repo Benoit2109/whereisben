@@ -2,11 +2,10 @@ import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-import styles from './Autocomplete.module.css';
+import styles from "./Autocomplete.module.css";
 
 function Autocomplete({ newcity, setLatitude, setLongitude }) {
-  const { country_name, city_name } = newcity;
-  
+  const { city_name, country_name } = newcity;
 
   const country = country_name.toLowerCase().split(" ").join("+");
   const city = city_name.toLowerCase().split(" ").join("+");
@@ -17,11 +16,13 @@ function Autocomplete({ newcity, setLatitude, setLongitude }) {
       .get(`${Url}q=${country},+${city}&format=geojson`)
       .then((res) => res.data.features[0])
       .then((res) => {
-        if (res.geometry.coordinates[0].length > 0 || res.geometry.coordinates[1].length>0) {
+        if (
+          res.geometry.coordinates.length > 0
+        ) {
           setLatitude(res.geometry.coordinates[0]);
           setLongitude(res.geometry.coordinates[1]);
         } else {
-            displayError();
+          displayError();
         }
       });
   };
@@ -34,7 +35,7 @@ function Autocomplete({ newcity, setLatitude, setLongitude }) {
 
   return (
     <div>
-      <button className={styles.auto_button}type="button" onClick={fetchCity}>
+      <button disabled={country&&city? false : true} className={styles.auto_button} type="button" onClick={fetchCity}>
         Rechercher
       </button>
     </div>

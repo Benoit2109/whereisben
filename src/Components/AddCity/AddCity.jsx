@@ -1,38 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
-import Autocomplete from "../Autocomplete/Autocomplete";
 
-export default function AddCity() {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [newcity, setNewcity] = useState({
-    country_name: "",
-    city_name: "",
-    latitude: "",
-    longitude: "",
-    photo: "",
-    last_visited: "",
-    nb_visited: "",
-  });
-
-  const onChangecity = (e) => {
+export default function AddCity({
+  latitude,
+  longitude,
+  newcity,
+  setNewcity,
+}) {
+  const onChange = (e) => {
     setNewcity({ ...newcity, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit=(e)=> {
     e.preventDefault();
+
     axios
-      .post(`${process.env.REACT_APP_API_BDD}/cities/newcity`, newcity)
+      .post(`${process.env.REACT_APP_API_BDD}cities/newcity`, newcity)
       .then((res) => res.data)
       .then((res) => {
-        alert("La ville à bien été ajouté!");
+        alert("La ville à bien été ajouté !");
       })
       .catch((e) => {
         console.error(e.message);
       });
-  };
+  }
 
   return (
     <div className={styles.addcityWrapper}>
@@ -46,7 +40,7 @@ export default function AddCity() {
               name="country_name"
               placeholder="Nom du pays"
               value={newcity.country_name}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="city_name">
@@ -57,7 +51,7 @@ export default function AddCity() {
               name="city_name"
               placeholder="Nom de la ville"
               value={newcity.city_name}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="latitude">
@@ -67,7 +61,7 @@ export default function AddCity() {
               name="latitude"
               placeholder="Latitude"
               value={latitude}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="longitude">
@@ -77,7 +71,7 @@ export default function AddCity() {
               name="longitude"
               placeholder="Longitude"
               value={longitude}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="photo">
@@ -89,7 +83,7 @@ export default function AddCity() {
               name="photo"
               placeholder="Url de la photo"
               value={newcity.photo}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="last_visited">
@@ -100,7 +94,7 @@ export default function AddCity() {
               name="last_visited"
               placeholder="ex: 2017"
               value={newcity.last_visited}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="nb_visited">
@@ -111,7 +105,7 @@ export default function AddCity() {
               name="nb_visited"
               placeholder="ex: 5"
               value={newcity.times_visited}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
 
@@ -125,15 +119,7 @@ export default function AddCity() {
             />
           </label>
         </form>
-        
       </div>
-      <Autocomplete
-          newcity={newcity}
-          setLatitude={setLatitude}
-          setLongitude={setLongitude}
-          latitude={latitude}
-          longitude={longitude}
-        />
       <Link to="/exploring" className={styles.addcityviewButtoncontainer}>
         <button className={styles.addcityviewButton}>
           Afficher sur la carte
@@ -142,3 +128,12 @@ export default function AddCity() {
     </div>
   );
 }
+
+AddCity.Proptype = {
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
+  setLongitude: PropTypes.number.isRequired,
+  setLatitude: PropTypes.number.isRequired,
+  newcity: PropTypes.object.isRequired,
+  setNewcity: PropTypes.func.isRequired,
+};

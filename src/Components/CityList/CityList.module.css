@@ -1,0 +1,19 @@
+.cityListEl_wrapper{
+    display:flex;
+    justify-content: space-around;
+}
+
+.cityListEl_wrapper p{
+    margin-left: 1rem;
+}
+
+.cityListEl_wrapper button{
+    margin-left: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--main-color-navbar);
+    color: white;
+    outline: none;
+    height: fit-content;
+    padding: 0.5rem;
+}

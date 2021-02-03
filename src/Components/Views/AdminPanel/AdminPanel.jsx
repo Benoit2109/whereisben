@@ -12,8 +12,8 @@ function AdminPanel() {
   const [newcity, setNewcity] = useState({
     country_name: "",
     city_name: "",
-    latitude: "",
-    longitude: "",
+    latitude: latitude,
+    longitude: longitude,
     photo: "",
     last_visited: "",
     nb_visited: "",

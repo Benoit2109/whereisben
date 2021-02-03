@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 export default function AddCity({
   latitude,
   longitude,
-  setLatitude,
-  setLongitude,
   newcity,
   setNewcity,
 }) {
@@ -134,8 +132,8 @@ export default function AddCity({
 AddCity.Proptype = {
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
-  setLongitude: PropTypes.func.isRequired,
-  setLatitude: PropTypes.func.isRequired,
+  setLongitude: PropTypes.number.isRequired,
+  setLatitude: PropTypes.number.isRequired,
   newcity: PropTypes.object.isRequired,
   setNewcity: PropTypes.func.isRequired,
 };

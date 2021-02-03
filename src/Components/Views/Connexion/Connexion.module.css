@@ -1,0 +1,6 @@
+.connexion_wrapper{
+    display:flex;
+    flex-direction: column;
+    background-image: url(../../../Assets/Planisphere-Mural_OriginalMap.jpg);
+    height:90vh;
+}

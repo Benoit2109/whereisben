@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import MainLayout from "../Layout/mainLayout";
-import Login from "../Login/Login";
 import AdminPanel from "../Views/AdminPanel/AdminPanel";
+import Connexion from "../Views/Connexion/Connexion";
 import Exploring from "../Views/Exploring/Exploring";
 import Homepage from "../Views/Homepage/Homepage";
 
@@ -12,8 +12,8 @@ const Root = () => (
     <Switch>
       <MainLayout exact path='/' component={Homepage} />
       <MainLayout exact path='/exploring' component={Exploring} />
-      <MainLayout exact path='/addCity' component={AdminPanel} />
-      <MainLayout exact path='/login' component={Login} />
+      <MainLayout exact path='/addcity' component={AdminPanel} />
+      <MainLayout exact path='/connexion' component={Connexion} />
     </Switch>
   </Router>
 );

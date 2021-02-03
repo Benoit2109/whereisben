@@ -1,18 +1,30 @@
 import React from "react";
+import axios from 'axios';
 import styles from "./Login.module.css";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 
 function Login() {
   const { register, handleSubmit, errors } = useForm({
     mode: "onTouched",
-  });
+  })
+
+  const signIn = (data) => {
+    axios
+      .post(`${process.env.REACT_APP_API_BDD}users/`, data)
+      .then((res) => res.data)
+      .then((data) => {
+        localStorage.setItem("TOKEN", data.token);
+        alert("logged Successfully")
+      })
+      .catch((err) => console.log(err.response.data.errormessage));
+    } 
+  
 
   const onSubmit = (data) => {
     if (data.email && data.password) {
-      //signIn(data);
+      signIn(data)
     } else {
-      alert("Remplissez tous les champs");
+      alert("Remplissez tous les champs de connexion");
     }
   };
 
@@ -29,6 +41,7 @@ function Login() {
               className={styles.Login_input}
               type="text"
               name="email"
+              placeholder="email@mail.com"
               register={register({
                 required: "Vous devez renseigner votre adresse e-mail",
                 pattern: {
@@ -41,30 +54,36 @@ function Login() {
           </label>
         </div>
         <div className={styles.Login_label_container}>
-        <label htmlFor="password *">
-          Password:
-          <input
-            className={styles.Login_input}
-            type="password"
-            name="password"
-            register={register({
-              required: `vous devez renseigner un mot de passe`,
-              minLength: {
-                value: 8,
-                message: "Minimum 8 caractères",
-              },
-            })}
-          />
-          {errors.password && <span>{errors.password.message}</span>}
-        </label>
+          <label htmlFor="password *">
+            Mot de passe:
+            <input
+              className={styles.Login_input}
+              type="password"
+              name="password"
+              placeholder="********"
+              register={register({
+                required: `vous devez renseigner un mot de passe`,
+                minLength: {
+                  value: 8,
+                  message: "Minimum 8 caractères",
+                },
+              })}
+            />
+            {errors.password && <span>{errors.password.message}</span>}
+          </label>
         </div>
+        <label htmlFor="button">
+          <input
+            className={styles.Login_button}
+            type="submit"
+            name="button"
+            value="Connexion"
+          ></input>
+        </label>
       </form>
 
       <div>
         <p>Vous n'avez pas de compte?</p>
-        <Link to="/signup" className={styles.Login_creer}>
-          <p>créez-en un!</p>
-        </Link>
       </div>
     </div>
   );

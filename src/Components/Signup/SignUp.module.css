@@ -1,0 +1,24 @@
+.Signup_form_container{
+    background-color: var(--main-color-grey);
+    height: fit-content;
+    padding-bottom: 5rem;
+}
+
+.Signup_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Signup_input{
+    margin: 1rem;
+}
+
+.Signup_button{
+    border:none;
+    background-color: var(--main-color-navbar);
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+}

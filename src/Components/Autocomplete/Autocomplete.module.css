@@ -1,6 +1,6 @@
 .auto_button{
     position:static;
-    transform:translateX(15rem)translateY(-27rem);
+    transform:translateX(5rem)translateY(-32rem);
     cursor: pointer;
     background-color: var(--main-color-navbar);
     color: white;
@@ -12,6 +12,6 @@
 
 @media screen and (min-width: 768px){
     .auto_button{
-        transform:translateX(50rem)translateY(-27rem);
+        transform:translateX(5rem)translateY(-27rem);
     } 
 }

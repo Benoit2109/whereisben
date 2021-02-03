@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-import styles from './AdminPanel.module.css'
+import styles from "./AdminPanel.module.css";
 
 import AddCity from "../../AddCity/AddCity";
 import Autocomplete from "../../Autocomplete/Autocomplete";
+import CityList from "../../CityList/CityList";
 
 function AdminPanel() {
   const [latitude, setLatitude] = useState("");
@@ -17,6 +18,7 @@ function AdminPanel() {
     last_visited: "",
     nb_visited: "",
   });
+
   return (
     <div className={styles.adminpanel_wrapper}>
       <AddCity
@@ -25,15 +27,16 @@ function AdminPanel() {
         longitude={longitude}
         setLongitude={setLongitude}
         newcity={newcity}
-        setNewcity={setNewcity}
       />
-      <Autocomplete className={styles.Admin_Fetch_button}
+      <Autocomplete
+        className={styles.Admin_Fetch_button}
         newcity={newcity}
         setLatitude={setLatitude}
         setLongitude={setLongitude}
         latitude={latitude}
         longitude={longitude}
       />
+      <CityList />
     </div>
   );
 }

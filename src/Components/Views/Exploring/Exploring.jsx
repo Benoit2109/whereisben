@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
 import { CitiesContext } from "../../Context/CitiesContext";
 import Map from "../../Map/Map";
 import SearchBar from "../../SearchBar/SearchBar";
@@ -7,8 +8,17 @@ import styles from "./Exploring.module.css";
 
 export default function Exploring() {
   const [citysearch, setCitysearch] = useState("");
-  const { cities } = useContext(CitiesContext);
+  const { cities, setCities } = useContext(CitiesContext);
   const [cityLoop, setcityLoop] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_BDD}cities`)
+      .then((res) => res.data)
+      .then((res) => {
+        setCities(res);
+      });
+  }, [setCities]);
 
   const FilterCity = cityLoop
     .filter(
@@ -18,11 +28,9 @@ export default function Exploring() {
     .map((city, index) => <Vignettes key={city.id} city={city} alt={index} />);
 
   useEffect(() => {
-    console.log("cities", cities);
     setcityLoop(cities);
-    console.log(cityLoop);
   }, []);
-  
+
   return (
     <div className={styles.exploringdisplay}>
       <Map />

@@ -1,29 +1,34 @@
 import React from "react";
 import axios from "axios";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
 
-
-export default function AddCity({latitude, longitude, setLatitude, setLongitude, newcity, setNewcity}) {
-
-
-  const onChangecity = (e) => {
+export default function AddCity({
+  latitude,
+  longitude,
+  setLatitude,
+  setLongitude,
+  newcity,
+  setNewcity,
+}) {
+  const onChange = (e) => {
     setNewcity({ ...newcity, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e) => {
+  function onSubmit(e) {
     e.preventDefault();
+
     axios
       .post(`${process.env.REACT_APP_API_BDD}/cities/newcity`, newcity)
       .then((res) => res.data)
       .then((res) => {
-        alert("La ville à bien été ajouté!");
+        alert("La ville à bien été ajouté !");
       })
       .catch((e) => {
         console.error(e.message);
       });
-  };
+  }
 
   return (
     <div className={styles.addcityWrapper}>
@@ -37,7 +42,7 @@ export default function AddCity({latitude, longitude, setLatitude, setLongitude,
               name="country_name"
               placeholder="Nom du pays"
               value={newcity.country_name}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="city_name">
@@ -48,7 +53,7 @@ export default function AddCity({latitude, longitude, setLatitude, setLongitude,
               name="city_name"
               placeholder="Nom de la ville"
               value={newcity.city_name}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="latitude">
@@ -58,7 +63,7 @@ export default function AddCity({latitude, longitude, setLatitude, setLongitude,
               name="latitude"
               placeholder="Latitude"
               value={latitude}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="longitude">
@@ -68,7 +73,7 @@ export default function AddCity({latitude, longitude, setLatitude, setLongitude,
               name="longitude"
               placeholder="Longitude"
               value={longitude}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="photo">
@@ -80,7 +85,7 @@ export default function AddCity({latitude, longitude, setLatitude, setLongitude,
               name="photo"
               placeholder="Url de la photo"
               value={newcity.photo}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="last_visited">
@@ -91,7 +96,7 @@ export default function AddCity({latitude, longitude, setLatitude, setLongitude,
               name="last_visited"
               placeholder="ex: 2017"
               value={newcity.last_visited}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="nb_visited">
@@ -102,7 +107,7 @@ export default function AddCity({latitude, longitude, setLatitude, setLongitude,
               name="nb_visited"
               placeholder="ex: 5"
               value={newcity.times_visited}
-              onChange={onChangecity}
+              onChange={onChange}
             />
           </label>
 
@@ -116,7 +121,6 @@ export default function AddCity({latitude, longitude, setLatitude, setLongitude,
             />
           </label>
         </form>
-        
       </div>
       <Link to="/exploring" className={styles.addcityviewButtoncontainer}>
         <button className={styles.addcityviewButton}>
@@ -134,5 +138,4 @@ AddCity.Proptype = {
   setLatitude: PropTypes.func.isRequired,
   newcity: PropTypes.object.isRequired,
   setNewcity: PropTypes.func.isRequired,
-  
-}
+};

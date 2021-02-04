@@ -4,10 +4,14 @@ import PropTypes from "prop-types";
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
 
-export default function AddCity({ latitude, longitude, newcity, setNewcity }) {
+export default function AddCity({ newcity, setNewcity }) {
   useEffect(() => {
-    console.log(newcity);
+    
   }, [newcity]);
+
+  const onchangePhoto = (e) => {
+    setNewcity({ ...newcity, [e.target.name]: e.target.files[0] });
+  }
 
   const onChange = (e) => {
     setNewcity({ ...newcity, [e.target.name]: e.target.value });
@@ -15,9 +19,20 @@ export default function AddCity({ latitude, longitude, newcity, setNewcity }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log('photo', newcity.photo)
+
+    const data = new FormData();
+    data.append("photo", newcity.photo)
+    data.append("country_name", newcity.country_name)
+    data.append("city_name", newcity.city_name)
+    data.append("longitude", newcity.longitude)
+    data.append("latitude", newcity.latitude)
+    data.append("nb_visited", newcity.nb_visited)
+    data.append("last_visited", newcity.last_visited)
+     
 
     axios
-      .post(`${process.env.REACT_APP_API_BDD}cities/newcity`, newcity)
+      .post(`${process.env.REACT_APP_API_BDD}cities/newcity`, data)
       .then((res) => res.data)
       .then((res) => {
         alert("La ville à bien été ajouté !");
@@ -39,7 +54,12 @@ export default function AddCity({ latitude, longitude, newcity, setNewcity }) {
   return (
     <div className={styles.addcityWrapper}>
       <div className={styles.addcityformContainer}>
-        <form className={styles.addcityform}>
+        <form
+          className={styles.addcityform}
+          action="/newcity"
+          method="POST"
+          enctype="multipart/form-data"
+        >
           <label htmlFor="country_name">
             Pays:
             <input
@@ -88,8 +108,8 @@ export default function AddCity({ latitude, longitude, newcity, setNewcity }) {
               accept="image/*"
               name="photo"
               placeholder="Url de la photo"
-              value={newcity.photo}
-              onChange={onChange}
+              value={newcity.photo.filename}
+              onChange={(e) => onchangePhoto(e)}
             />
           </label>
           <label htmlFor="last_visited">

@@ -15,8 +15,11 @@
 
 .vignetteIllustration {
   max-width: 90%;
+  height: 25vh;
+  background: cover;
   margin-top: 0.5rem;
   position: center;
+  object-fit:cover;
 }
 
 .vignetteInfos {
@@ -35,7 +38,7 @@
 @media screen and (min-width: 768px) {
   .vignetteContainer {
     width: 22vw;
-    margin-left: 1rem;
+    
     
   }
 

@@ -10,7 +10,7 @@ export default function Vignettes({ city }) {
       <div className={styles.vignetteContainer} key={city.id}>
         <img
           className={styles.vignetteIllustration}
-          src={city.photo}
+          src={`${process.env.REACT_APP_API_BDD}${city.photo}`}
           alt={city.city_name}
         />
         <div className={styles.vignetteInfos}>

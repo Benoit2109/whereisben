@@ -1,28 +1,30 @@
-import React from "react";
-import axios from 'axios';
+import React, { useContext } from "react";
+import axios from "axios";
 import styles from "./Login.module.css";
-import { useForm } from "react-hook-form";
+import { UserContext } from "../Context/UserContext";
 
 function Login() {
-  const { register, handleSubmit, errors } = useForm({
-    mode: "onTouched",
-  })
+  const { user, setUser } = useContext(UserContext);
 
-  const signIn = (data) => {
-    axios
-      .post(`${process.env.REACT_APP_API_BDD}users/`, data)
-      .then((res) => res.data)
-      .then((data) => {
-        localStorage.setItem("TOKEN", data.token);
-        alert("logged Successfully")
-      })
-      .catch((err) => console.log(err.response.data.errormessage));
-    } 
-  
+  const onChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-  const onSubmit = (data) => {
-    if (data.email && data.password) {
-      signIn(data)
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (user.email && user.password) {
+      axios
+        .post(
+          `${process.env.REACT_APP_API_BDD}users/login`,
+          user.email,
+          user.password
+        )
+        .then((res) => res.data)
+        .then((data) => {
+          localStorage.setItem("TOKEN", data.token);
+          alert("logged Successfully");
+        })
+        .catch((err) => console.log(err.response.data.errormessage));
     } else {
       alert("Remplissez tous les champs de connexion");
     }
@@ -30,10 +32,7 @@ function Login() {
 
   return (
     <div className={styles.Login_wrapper}>
-      <form
-        className={styles.Login_form_container}
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className={styles.Login_form_container}>
         <div className={styles.Login_label_container}>
           <label htmlFor="email">
             Email:
@@ -42,15 +41,9 @@ function Login() {
               type="text"
               name="email"
               placeholder="email@mail.com"
-              register={register({
-                required: "Vous devez renseigner votre adresse e-mail",
-                pattern: {
-                  value: /^([\w-]+)@([A-Za-z]+)\.([A-Za-z]{2,})$/,
-                  message: "Cet e-mail n'est pas valide",
-                },
-              })}
+              value={user.email}
+              onChange={(e) => onChange(e)}
             />
-            {errors.email && <span>{errors.email.message}</span>}
           </label>
         </div>
         <div className={styles.Login_label_container}>
@@ -61,15 +54,9 @@ function Login() {
               type="password"
               name="password"
               placeholder="********"
-              register={register({
-                required: `vous devez renseigner un mot de passe`,
-                minLength: {
-                  value: 8,
-                  message: "Minimum 8 caractères",
-                },
-              })}
+              value={user.password}
+              onChange={(e) => onChange(e)}
             />
-            {errors.password && <span>{errors.password.message}</span>}
           </label>
         </div>
         <label htmlFor="button">
@@ -78,6 +65,7 @@ function Login() {
             type="submit"
             name="button"
             value="Connexion"
+            onClick={(e) => onSubmit(e)}
           ></input>
         </label>
       </form>

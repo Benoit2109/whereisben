@@ -32,6 +32,7 @@ export default function Map() {
         {cities.map((city) =>
           
             <Marker
+              className={styles.map_icon}
               position={[city.latitude, city.longitude]}
               key={city.city_name}
               icon={cityPin}

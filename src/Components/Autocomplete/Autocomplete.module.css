@@ -1,6 +1,6 @@
 .auto_button{
     position:static;
-    transform:translateX(5rem)translateY(-32rem);
+    transform:translateX(6rem)translateY(-27rem);
     cursor: pointer;
     background-color: var(--main-color-navbar);
     color: white;

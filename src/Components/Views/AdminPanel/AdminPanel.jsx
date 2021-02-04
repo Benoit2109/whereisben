@@ -7,13 +7,11 @@ import Autocomplete from "../../Autocomplete/Autocomplete";
 import CityList from "../../CityList/CityList";
 
 function AdminPanel() {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
   const [newcity, setNewcity] = useState({
     country_name: "",
     city_name: "",
-    latitude: latitude,
-    longitude: longitude,
+    latitude: "",
+    longitude: "",
     photo: "",
     last_visited: "",
     nb_visited: "",
@@ -21,21 +19,11 @@ function AdminPanel() {
 
   return (
     <div className={styles.adminpanel_wrapper}>
-      <AddCity
-        latitude={latitude}
-        setLatitude={setLatitude}
-        longitude={longitude}
-        setLongitude={setLongitude}
-        newcity={newcity}
-        setNewcity={setNewcity}
-      />
+      <AddCity newcity={newcity} setNewcity={setNewcity} />
       <Autocomplete
         className={styles.Admin_Fetch_button}
         newcity={newcity}
-        setLatitude={setLatitude}
-        setLongitude={setLongitude}
-        latitude={latitude}
-        longitude={longitude}
+        setNewcity={setNewcity}
       />
       <CityList />
     </div>

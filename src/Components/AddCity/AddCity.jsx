@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
 
-export default function AddCity({
-  latitude,
-  longitude,
-  newcity,
-  setNewcity,
-}) {
+export default function AddCity({ latitude, longitude, newcity, setNewcity }) {
+  useEffect(() => {
+    console.log(newcity);
+  }, [newcity]);
+
   const onChange = (e) => {
     setNewcity({ ...newcity, [e.target.name]: e.target.value });
   };
 
-  const onSubmit=(e)=> {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     axios
@@ -26,7 +25,16 @@ export default function AddCity({
       .catch((e) => {
         console.error(e.message);
       });
-  }
+    setNewcity({
+      country_name: "",
+      city_name: "",
+      latitude: "",
+      longitude: "",
+      photo: "",
+      last_visited: "",
+      nb_visited: "",
+    });
+  };
 
   return (
     <div className={styles.addcityWrapper}>
@@ -60,8 +68,7 @@ export default function AddCity({
               type="text"
               name="latitude"
               placeholder="Latitude"
-              value={latitude}
-              onChange={onChange}
+              value={newcity.latitude}
             />
           </label>
           <label htmlFor="longitude">
@@ -70,8 +77,7 @@ export default function AddCity({
               type="text"
               name="longitude"
               placeholder="Longitude"
-              value={longitude}
-              onChange={onChange}
+              value={newcity.longitude}
             />
           </label>
           <label htmlFor="photo">
@@ -130,10 +136,6 @@ export default function AddCity({
 }
 
 AddCity.Proptype = {
-  latitude: PropTypes.number.isRequired,
-  longitude: PropTypes.number.isRequired,
-  setLongitude: PropTypes.number.isRequired,
-  setLatitude: PropTypes.number.isRequired,
   newcity: PropTypes.object.isRequired,
   setNewcity: PropTypes.func.isRequired,
 };

@@ -25,7 +25,7 @@ export default function Exploring() {
       (e) =>
         e.city_name.includes(citysearch) || e.country_name.includes(citysearch)
     )
-    .map((city, index) => <Vignettes key={city.id} city={city} alt={index} />);
+    .map((city) => <Vignettes key={city.id} city={city} />);
 
   useEffect(() => {
     setcityLoop(cities);

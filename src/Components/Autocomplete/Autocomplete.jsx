@@ -19,8 +19,8 @@ function Autocomplete({ newcity, setNewcity }) {
       .then((res) => {
         if (res.geometry.coordinates.length > 0) {
           setNewcity({...newcity, 
-            latitude: res.geometry.coordinates[0],
-            longitude: res.geometry.coordinates[1],
+            latitude: res.geometry.coordinates[1],
+            longitude: res.geometry.coordinates[0],
           });
         } else {
           displayError();

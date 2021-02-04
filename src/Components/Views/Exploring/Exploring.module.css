@@ -12,8 +12,16 @@
   margin-left: 1rem;
 }
 
+
+
 @media screen and (min-width: 768px) {
     .exploringdisplay {
       flex-direction: row;
+    }
+
+    .exploring_vignettes_wrapper{
+      overflow: scroll;
+      height:80vh;
+      
     }
   } ;

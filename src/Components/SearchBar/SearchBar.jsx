@@ -31,5 +31,5 @@ function SearchBar({citysearch, setCitysearch}) {
 export default SearchBar;
 
 SearchBar.propTypes ={
-  citysearch: PropTypes.arrayOf(PropTypes.object).isRequired,
+  citysearch: PropTypes.arrayOf(PropTypes.array).isRequired,
 }

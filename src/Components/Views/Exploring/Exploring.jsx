@@ -36,6 +36,7 @@ export default function Exploring() {
       <Map />
       <div className={styles.exploringcenter}>
         <SearchBar citysearch={citysearch} setCitysearch={setCitysearch} />
+        <div className={styles.exploring_vignettes_wrapper}>
         {FilterCity.length > 0 ? (
           FilterCity
         ) : (
@@ -43,6 +44,7 @@ export default function Exploring() {
             Nous n'avons pas trouvé de ville(s) correspondant à votre recherche.
           </p>
         )}
+        </div>
       </div>
     </div>
   );

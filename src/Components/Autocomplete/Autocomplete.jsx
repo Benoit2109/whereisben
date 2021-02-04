@@ -52,5 +52,5 @@ export default Autocomplete;
 
 Autocomplete.propTypes = {
   newcity: PropTypes.object.isRequired,
-  setNewcity: PropTypes.object.isRequired,
+  setNewcity: PropTypes.func.isRequired,
 };

@@ -1,9 +1,16 @@
-.adminpanel_wrapper{
-    display:flex;
-    flex-direction: column;
-    align-items:center;
+.adminpanel_container {
+  background-image: url(../../../Assets/Planisphere-Mural_OriginalMap.jpg);
+  height: 80vh;
 }
 
-/* .Admin_Fetch_button{
-    position:absolute;
-} */
+.adminpanel_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .Admin_citylist {
+    margin-top: 5vh;
+  }
+}

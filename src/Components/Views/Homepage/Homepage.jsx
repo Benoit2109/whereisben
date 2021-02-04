@@ -13,7 +13,7 @@ export default function Homepage() {
           .then((res) => {
             setCities(res);
           });
-      }, [setCities]);
+      }, []);
 return(
     <div>
         <VideoPlayer />

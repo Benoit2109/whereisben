@@ -10,6 +10,7 @@ import { CitiesContext } from "../../Context/CitiesContext";
 
 function AdminPanel() {
   const { setCities} = useContext(CitiesContext)
+  // state qui me permet de récupérer les informations d'une nouvelle ville.
   const [newcity, setNewcity] = useState({
     country_name: "",
     city_name: "",
@@ -19,7 +20,7 @@ function AdminPanel() {
     last_visited: "",
     nb_visited: "",
   });
-
+  // je rafraichi mon contexte en rappelant l'api lorsque la liste des villes est actualisée.
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_BDD}cities`)

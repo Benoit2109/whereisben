@@ -5,32 +5,34 @@ import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
 
 export default function AddCity({ newcity, setNewcity }) {
-  useEffect(() => {
-    
-  }, [newcity]);
-
+  // je récupère le fichier image contenu dans l'input type file.
+  // je l'insère dans l'objet Newcity.
   const onchangePhoto = (e) => {
-    setNewcity({ ...newcity, [e.target.name]: e.target.files[0] });
-  }
-
+    if (e.target.files[0]) {
+      setNewcity({ ...newcity, [e.target.name]: e.target.files[0] });
+    } else {
+      setNewcity({ ...newcity, [e.target.name]: "" });
+    }
+  };
+  // je récupère toutes les valeurs de mes champs pour les insérer dans mon objet newCity.
   const onChange = (e) => {
     setNewcity({ ...newcity, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('photo', newcity.photo)
 
+    // je reformate mes données pour les envoyer vers ma base de données et pouvoir récupérer ma photo en type file.
     const data = new FormData();
-    data.append("photo", newcity.photo)
-    data.append("country_name", newcity.country_name)
-    data.append("city_name", newcity.city_name)
-    data.append("longitude", newcity.longitude)
-    data.append("latitude", newcity.latitude)
-    data.append("nb_visited", newcity.nb_visited)
-    data.append("last_visited", newcity.last_visited)
-     
+    data.append("photo", newcity.photo);
+    data.append("country_name", newcity.country_name);
+    data.append("city_name", newcity.city_name);
+    data.append("longitude", newcity.longitude);
+    data.append("latitude", newcity.latitude);
+    data.append("nb_visited", newcity.nb_visited);
+    data.append("last_visited", newcity.last_visited);
 
+    // j'envoi la ville dans la base de donnée.
     axios
       .post(`${process.env.REACT_APP_API_BDD}cities/newcity`, data)
       .then((res) => res.data)
@@ -40,6 +42,7 @@ export default function AddCity({ newcity, setNewcity }) {
       .catch((e) => {
         console.error(e.message);
       });
+    // je réinitialise mon objet newCity à null pour ajouter une nouvelle ville.
     setNewcity({
       country_name: "",
       city_name: "",

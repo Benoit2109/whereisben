@@ -2,8 +2,11 @@ import React, { useContext } from "react";
 import axios from "axios";
 import styles from "./Login.module.css";
 import { UserContext } from "../Context/UserContext";
+import { Link, useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function Login() {
+function Login({member, setMember}) {
+  let history= useHistory();
   const { user, setUser } = useContext(UserContext);
 
   const onChange = (e) => {
@@ -12,23 +15,31 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (user.email && user.password) {
+    const email = user.email;
+    const password = user.password;
+
+    if (email && password) {
       axios
         .post(
           `${process.env.REACT_APP_API_BDD}users/login`,
-          user.email,
-          user.password
+         { email,
+          password}
         )
         .then((res) => res.data)
         .then((data) => {
           localStorage.setItem("TOKEN", data.token);
           alert("logged Successfully");
+          history.push('/exploring')
         })
         .catch((err) => console.log(err.response.data.errormessage));
     } else {
       alert("Remplissez tous les champs de connexion");
     }
   };
+
+  const onClick = () => {
+    setMember(!member)
+  }
 
   return (
     <div className={styles.Login_wrapper}>
@@ -71,10 +82,17 @@ function Login() {
       </form>
 
       <div>
-        <p>Vous n'avez pas de compte?</p>
+        <Link to="/signup" onClick={onClick}>
+          <p>Vous n'avez pas de compte?</p>
+        </Link>
       </div>
     </div>
   );
 }
 
 export default Login;
+
+Login.propTypes = {
+  newcity: PropTypes.bool.isRequired,
+  setNewcity: PropTypes.func.isRequired,
+};

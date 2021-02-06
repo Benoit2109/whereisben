@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import axios from "axios";
+import {useHistory} from 'react-router-dom';
 
 import { UserContext } from "../Context/UserContext";
 import styles from "./SignUp.module.css";
 
 function SignUp() {
+  let history = useHistory();
   const { user, setUser } = useContext(UserContext);
 
   const SignUp = (user) => {
@@ -25,6 +27,7 @@ function SignUp() {
     console.log(user);
     if (user.user_name && user.firstname && user.email && user.password) {
       SignUp(user);
+      history.push('/login');
     } else {
       alert("veuillez remplir tous les champs d'inscription.");
     }

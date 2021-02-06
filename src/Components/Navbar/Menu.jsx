@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Menu.module.css";
 
 import globe from "../../Assets/globe_menu.png";
+import globeConnected from "../../Assets/globeGreen_menu.png"
 
 export default function Menu() {
   const [active, setActive] = useState(false);
@@ -11,10 +12,15 @@ export default function Menu() {
     setActive(!active);
   };
 
+  const deconnect = () => {
+    localStorage.removeItem("TOKEN");
+    alert("Disconnected successfully");
+  }
+
   return (
     <div className={styles.menuWrapper}>
       <button type="button" className={styles.menuButton} onClick={openMenu}>
-        <img className={styles.menuGlobe} src={globe} alt="globe" />
+        <img className={styles.menuGlobe} src={localStorage.getItem("TOKEN")? globeConnected : globe} alt="globe" />
       </button>
       <ul className={`${styles.menuList} ${active && styles.menuOpen}`}>
         <li className={styles.menuListItem} onClick={openMenu}>
@@ -28,8 +34,8 @@ export default function Menu() {
           </Link>
         </li>
         <li className={styles.menuListItem} onClick={openMenu}>
-          <Link className={styles.menuLink} to="/connexion">
-            Connexion / Inscription
+          <Link className={styles.menuLink} to="/login">
+            {localStorage.getItem('TOKEN')? <p className={styles.menuP} onClick={deconnect}>Deconnexion</p> : "Connexion / Inscription"}
           </Link>
         </li>
         <li className={styles.menuListItem} onClick={openMenu}>

@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import axios from "axios";
 import styles from "./Login.module.css";
 import { UserContext } from "../Context/UserContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function Login({member, setMember}) {
+  let history= useHistory();
   const { user, setUser } = useContext(UserContext);
 
   const onChange = (e) => {
@@ -14,17 +15,21 @@ function Login({member, setMember}) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (user.email && user.password) {
+    const email = user.email;
+    const password = user.password;
+
+    if (email && password) {
       axios
         .post(
           `${process.env.REACT_APP_API_BDD}users/login`,
-          user.email,
-          user.password
+         { email,
+          password}
         )
         .then((res) => res.data)
         .then((data) => {
           localStorage.setItem("TOKEN", data.token);
           alert("logged Successfully");
+          history.push('/exploring')
         })
         .catch((err) => console.log(err.response.data.errormessage));
     } else {

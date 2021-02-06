@@ -11,6 +11,11 @@ export default function Menu() {
     setActive(!active);
   };
 
+  const deconnect = () => {
+    localStorage.removeItem("TOKEN");
+    alert("Disconnected successfully");
+  }
+
   return (
     <div className={styles.menuWrapper}>
       <button type="button" className={styles.menuButton} onClick={openMenu}>
@@ -29,7 +34,7 @@ export default function Menu() {
         </li>
         <li className={styles.menuListItem} onClick={openMenu}>
           <Link className={styles.menuLink} to="/login">
-            Connexion / Inscription
+            {localStorage.getItem('TOKEN')? <p className={styles.menuP} onClick={deconnect}>Deconnexion</p> : "Connexion / Inscription"}
           </Link>
         </li>
         <li className={styles.menuListItem} onClick={openMenu}>

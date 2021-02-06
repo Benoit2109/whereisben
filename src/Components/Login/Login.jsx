@@ -27,6 +27,8 @@ function Login({member, setMember}) {
         )
         .then((res) => res.data)
         .then((data) => {
+          console.log(data)
+          localStorage.setItem("ID", data.user.id)
           localStorage.setItem("TOKEN", data.token);
           alert("logged Successfully");
           history.push('/exploring')

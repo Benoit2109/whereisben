@@ -9,7 +9,7 @@ export const UserContext = createContext({
 UserContext.displayName = "UserContext";
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({user_name: "", firstname: "", email: "", password: "" });
+  const [user, setUser] = useState({user_name: "", firstname: "", email: "", password: "", id:"" });
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

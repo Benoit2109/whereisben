@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
 
+
 export default function AddCity({ newcity, setNewcity }) {
+  const userId = localStorage.getItem("ID")
   // je récupère le fichier image contenu dans l'input type file.
   // je l'insère dans l'objet Newcity.
   const onchangePhoto = (e) => {
@@ -31,6 +33,7 @@ export default function AddCity({ newcity, setNewcity }) {
     data.append("latitude", newcity.latitude);
     data.append("nb_visited", newcity.nb_visited);
     data.append("last_visited", newcity.last_visited);
+    data.append("user_id", userId);
 
     // j'envoi la ville dans la base de donnée.
     axios

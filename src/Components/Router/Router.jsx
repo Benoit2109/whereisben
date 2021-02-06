@@ -13,7 +13,8 @@ const Root = () => (
       <MainLayout exact path='/' component={Homepage} />
       <MainLayout exact path='/exploring' component={Exploring} />
       <MainLayout exact path='/addcity' component={AdminPanel} />
-      <MainLayout exact path='/connexion' component={Connexion} />
+      <MainLayout exact path='/login' component={Connexion} />
+      <MainLayout exact path='/signup' component={Connexion} />
     </Switch>
   </Router>
 );

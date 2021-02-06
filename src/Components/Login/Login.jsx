@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import axios from "axios";
 import styles from "./Login.module.css";
 import { UserContext } from "../Context/UserContext";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function Login() {
+function Login({member, setMember}) {
   const { user, setUser } = useContext(UserContext);
 
   const onChange = (e) => {
@@ -29,6 +31,10 @@ function Login() {
       alert("Remplissez tous les champs de connexion");
     }
   };
+
+  const onClick = () => {
+    setMember(!member)
+  }
 
   return (
     <div className={styles.Login_wrapper}>
@@ -71,10 +77,17 @@ function Login() {
       </form>
 
       <div>
-        <p>Vous n'avez pas de compte?</p>
+        <Link to="/signup" onClick={onClick}>
+          <p>Vous n'avez pas de compte?</p>
+        </Link>
       </div>
     </div>
   );
 }
 
 export default Login;
+
+Login.propTypes = {
+  newcity: PropTypes.bool.isRequired,
+  setNewcity: PropTypes.func.isRequired,
+};

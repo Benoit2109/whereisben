@@ -28,7 +28,7 @@ export default function Menu() {
           </Link>
         </li>
         <li className={styles.menuListItem} onClick={openMenu}>
-          <Link className={styles.menuLink} to="/connexion">
+          <Link className={styles.menuLink} to="/login">
             Connexion / Inscription
           </Link>
         </li>

@@ -6,12 +6,14 @@ import styles from "./CityList.module.css";
 
 function CityList() {
   const { cities } = useContext(CitiesContext);
-  
 
   const deleteCity = (id) => {
-
     axios
-      .delete(`${process.env.REACT_APP_API_BDD}cities/${id}`)
+      .delete(`${process.env.REACT_APP_API_BDD}cities/${id}`, {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("TOKEN")}`,
+        },
+      })
       .then((res) => res.data)
       .then((res) => {
         alert("ville supprimée avec succès !");
@@ -31,8 +33,12 @@ function CityList() {
         >
           <p className={styles.citylist_p}>Pays: {city.country_name}</p>
           <p className={styles.citylist_p}>Ville: {city.city_name}</p>
-          <p className={styles.citylist_p}>Dernière visite: {city.last_visited}</p>
-          <p className={styles.citylist_p}>Nombre de visite: {city.nb_visited}</p>
+          <p className={styles.citylist_p}>
+            Dernière visite: {city.last_visited}
+          </p>
+          <p className={styles.citylist_p}>
+            Nombre de visite: {city.nb_visited}
+          </p>
           <button type="button" onClick={() => deleteCity(city.id)}>
             X
           </button>

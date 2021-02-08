@@ -4,9 +4,8 @@ import PropTypes from "prop-types";
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
 
-
 export default function AddCity({ newcity, setNewcity }) {
-  const userId = localStorage.getItem("ID")
+  const userId = localStorage.getItem("ID");
   // je récupère le fichier image contenu dans l'input type file.
   // je l'insère dans l'objet Newcity.
   const onchangePhoto = (e) => {
@@ -37,7 +36,11 @@ export default function AddCity({ newcity, setNewcity }) {
 
     // j'envoi la ville dans la base de donnée.
     axios
-      .post(`${process.env.REACT_APP_API_BDD}cities/newcity`, data)
+      .post(`${process.env.REACT_APP_API_BDD}cities/newcity`, data, {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("TOKEN")}`,
+        },
+      })
       .then((res) => res.data)
       .then((res) => {
         alert("La ville à bien été ajouté !");

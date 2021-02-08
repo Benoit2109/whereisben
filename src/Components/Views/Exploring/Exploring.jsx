@@ -12,17 +12,21 @@ export default function Exploring() {
   const [cityLoop, setcityLoop] = useState([]);
 
   const id = localStorage.getItem("ID");
-    useEffect(() => {
-       id && axios
-          .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`)
-          .then((res) => res.data)
-          .then((res) => {
-            setcityLoop(res);
-            setCities(res);
-            console.log(res);
-          });
-      }, []);
-      
+  useEffect(() => {
+    id &&
+      axios
+        .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`, {
+          headers: {
+            Authorization: `bearer ${localStorage.getItem("TOKEN")}`,
+          },
+        })
+        .then((res) => res.data)
+        .then((res) => {
+          setcityLoop(res);
+          setCities(res);
+          console.log(res);
+        });
+  }, []);
 
   const FilterCity = cityLoop
     .filter(
@@ -31,21 +35,20 @@ export default function Exploring() {
     )
     .map((city) => <Vignettes key={city.id} city={city} />);
 
-  
-
   return (
     <div className={styles.exploringdisplay}>
-      <Map cityLoop={cityLoop} citysearch={citysearch}/>
+      <Map cityLoop={cityLoop} citysearch={citysearch} />
       <div className={styles.exploringcenter}>
         <SearchBar citysearch={citysearch} setCitysearch={setCitysearch} />
         <div className={styles.exploring_vignettes_wrapper}>
-        {FilterCity.length > 0 ? (
-          FilterCity
-        ) : (
-          <p className={styles.nocities}>
-            Nous n'avons pas trouvé de ville(s) correspondant à votre recherche.
-          </p>
-        )}
+          {FilterCity.length > 0 ? (
+            FilterCity
+          ) : (
+            <p className={styles.nocities}>
+              Nous n'avons pas trouvé de ville(s) correspondant à votre
+              recherche.
+            </p>
+          )}
         </div>
       </div>
     </div>

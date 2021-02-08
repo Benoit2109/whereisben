@@ -10,7 +10,11 @@ export default function Homepage() {
   useEffect(() => {
     id &&
       axios
-        .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`)
+        .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`, {
+          headers: {
+            Authorization: `bearer ${localStorage.getItem("TOKEN")}`,
+          },
+        })
         .then((res) => res.data)
         .then((res) => {
           setCities(res);

@@ -3,6 +3,7 @@ import axios from "axios";
 
 import VideoPlayer from "../../Video/VideoPlayer";
 import { CitiesContext } from "../../../Context/CitiesContext";
+import styles from "./Homepage.module.css";
 
 export default function Homepage() {
   const { setCities } = useContext(CitiesContext);
@@ -21,7 +22,7 @@ export default function Homepage() {
         });
   }, []);
   return (
-    <div>
+    <div className={styles.Homepage_wrapper}>
       <VideoPlayer />
     </div>
   );

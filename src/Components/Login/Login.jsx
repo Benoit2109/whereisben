@@ -5,8 +5,8 @@ import { UserContext } from "../Context/UserContext";
 import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Login({member, setMember}) {
-  let history= useHistory();
+function Login({ member, setMember }) {
+  let history = useHistory();
   const { user, setUser } = useContext(UserContext);
 
   const onChange = (e) => {
@@ -20,18 +20,18 @@ function Login({member, setMember}) {
 
     if (email && password) {
       axios
-        .post(
-          `${process.env.REACT_APP_API_BDD}users/login`,
-         { email,
-          password}
-        )
+        .post(`${process.env.REACT_APP_API_BDD}users/login`, {
+          email,
+          password,
+        })
         .then((res) => res.data)
         .then((data) => {
-          console.log(data)
-          localStorage.setItem("ID", data.user.id)
+          localStorage.setItem("ID", data.user.id);
           localStorage.setItem("TOKEN", data.token);
-          alert("logged Successfully");
-          history.push('/exploring')
+          setTimeout(() => {
+            alert("logged Successfully");
+            history.push("/exploring");
+          }, 500);
         })
         .catch((err) => console.log(err.response.data.errormessage));
     } else {
@@ -40,8 +40,8 @@ function Login({member, setMember}) {
   };
 
   const onClick = () => {
-    setMember(!member)
-  }
+    setMember(!member);
+  };
 
   return (
     <div className={styles.Login_wrapper}>
@@ -95,6 +95,6 @@ function Login({member, setMember}) {
 export default Login;
 
 Login.propTypes = {
-  newcity: PropTypes.bool.isRequired,
-  setNewcity: PropTypes.func.isRequired,
+  member: PropTypes.bool.isRequired,
+  setMember: PropTypes.func.isRequired,
 };

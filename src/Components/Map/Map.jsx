@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import  L  from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import styles from "./Map.module.css";
 import cityIcon from "../../Assets/pin.svg";
-import { CitiesContext } from "../Context/CitiesContext";
+import PropTypes from "prop-types";
 
 const DefaultIcon = new L.icon({
   iconUrl: cityIcon,
@@ -15,8 +15,7 @@ const DefaultIcon = new L.icon({
 
 
 
-export default function Map() {
-  const { cities } = useContext(CitiesContext);
+export default function Map({cityLoop, citysearch}) {
 
   return (
     <div>
@@ -32,7 +31,7 @@ export default function Map() {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=33a48696f2324df5807babc5240f8605"
         />
-        {cities.map((city) => (
+        { cityLoop.filter((e) => e.city_name.includes(citysearch) || e.country_name.includes(citysearch)).map((city) => (
           <Marker
             className={styles.map_icon}
             position={[city.latitude, city.longitude]}
@@ -46,3 +45,8 @@ export default function Map() {
     </div>
   );
 }
+
+Map.propTypes = {
+  cityLoop: PropTypes.arrayOf(PropTypes.object).isRequired,
+  scitysearch: PropTypes.string.isRequired,
+};

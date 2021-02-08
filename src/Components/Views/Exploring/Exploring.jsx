@@ -8,17 +8,21 @@ import styles from "./Exploring.module.css";
 
 export default function Exploring() {
   const [citysearch, setCitysearch] = useState("");
-  const { cities, setCities } = useContext(CitiesContext);
+  const { setCities } = useContext(CitiesContext);
   const [cityLoop, setcityLoop] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_BDD}cities`)
-      .then((res) => res.data)
-      .then((res) => {
-        setCities(res);
-      });
-  }, [setCities]);
+  const id = localStorage.getItem("ID");
+    useEffect(() => {
+       id && axios
+          .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`)
+          .then((res) => res.data)
+          .then((res) => {
+            setcityLoop(res);
+            setCities(res);
+            console.log(res);
+          });
+      }, []);
+      
 
   const FilterCity = cityLoop
     .filter(
@@ -27,13 +31,11 @@ export default function Exploring() {
     )
     .map((city) => <Vignettes key={city.id} city={city} />);
 
-  useEffect(() => {
-    setcityLoop(cities);
-  }, []);
+  
 
   return (
     <div className={styles.exploringdisplay}>
-      <Map />
+      <Map cityLoop={cityLoop} citysearch={citysearch}/>
       <div className={styles.exploringcenter}>
         <SearchBar citysearch={citysearch} setCitysearch={setCitysearch} />
         <div className={styles.exploring_vignettes_wrapper}>

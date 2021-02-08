@@ -6,9 +6,10 @@ import { CitiesContext } from '../../Context/CitiesContext';
 
 export default function Homepage() {
     const {setCities} = useContext(CitiesContext)
+    const id = localStorage.getItem("ID");
     useEffect(() => {
-        axios
-          .get(`${process.env.REACT_APP_API_BDD}cities`)
+       id && axios
+          .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`)
           .then((res) => res.data)
           .then((res) => {
             setCities(res);

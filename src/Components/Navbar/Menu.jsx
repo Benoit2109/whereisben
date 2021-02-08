@@ -41,18 +41,18 @@ export default function Menu() {
         <li className={styles.menuListItem} onClick={openMenu}>
           <Link className={styles.menuLink} to="/login">
             {localStorage.getItem("TOKEN") ? (
-              <p className={styles.menuP} onClick={deconnect}>
-                Deconnexion
+              <p className={styles.menuP} onClick={() => deconnect()}><strong>Deconnexion</strong>
+                
               </p>
             ) : (
-              "Connexion / Inscription"
+              <strong>"Connexion / Inscription"</strong>
             )}
           </Link>
         </li>
         {localStorage.getItem("TOKEN") ? (
           <li className={styles.menuListItem} onClick={openMenu}>
-            <Link className={styles.menuLink} to="/addcity">
-              Add new city
+            <Link className={styles.menuLink} to="/addcity"><strong>Add new city</strong>
+              
             </Link>
           </li>
         ) : (

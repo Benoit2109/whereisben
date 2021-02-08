@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import {useHistory} from 'react-router-dom';
-
+import PropTypes from "prop-types";
 import { UserContext } from "../Context/UserContext";
 import styles from "./SignUp.module.css";
 
-function SignUp() {
+function SignUp({ member, setMember }) {
   let history = useHistory();
   const { user, setUser } = useContext(UserContext);
 
@@ -15,6 +15,7 @@ function SignUp() {
       .then((res) => res.data)
       .then((data) => {
         alert("incription réussie. Pour continuer, merci de vous connecter ");
+        
       });
   };
 
@@ -24,7 +25,6 @@ function SignUp() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
     if (user.user_name && user.firstname && user.email && user.password) {
       SignUp(user);
       history.push('/login');
@@ -94,3 +94,8 @@ function SignUp() {
 }
 
 export default SignUp;
+
+SignUp.propTypes = {
+  member: PropTypes.bool.isRequired,
+  setMember: PropTypes.func.isRequired,
+};

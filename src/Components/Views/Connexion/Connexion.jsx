@@ -8,17 +8,18 @@ import styles from "./Connexion.module.css";
 function Connexion() {
   const { setCities } = useContext(CitiesContext);
   const [member, setMember] = useState(false);
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_BDD}cities`)
-      .then((res) => res.data)
-      .then((res) => {
-        setCities(res);
-      });
-  }, []);
+  const id = localStorage.getItem("ID");
+    useEffect(() => {
+       id && axios
+          .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`)
+          .then((res) => res.data)
+          .then((res) => {
+            setCities(res);
+          });
+      }, []);
   return (
     <div className={styles.connexion_wrapper}>
-      {member ? <SignUp /> : <Login setMember={setMember} /> }
+      {member ? <SignUp setMember={setMember}/> : <Login setMember={setMember} /> }
     </div>
   );
 }

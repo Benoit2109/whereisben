@@ -26,6 +26,7 @@ export default function Map({cityLoop, citysearch}) {
         scrollWheelZoom
         minZoom={2}
         draggable={false}
+        zoomSnap={.25}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

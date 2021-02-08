@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import axios from "axios";
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import PropTypes from "prop-types";
 import { UserContext } from "../../Context/UserContext";
 import styles from "./SignUp.module.css";
 
-function SignUp({ member, setMember }) {
+function SignUp({ setMember }) {
   let history = useHistory();
   const { user, setUser } = useContext(UserContext);
 
@@ -14,8 +14,9 @@ function SignUp({ member, setMember }) {
       .post(`${process.env.REACT_APP_API_BDD}users/newuser`, user)
       .then((res) => res.data)
       .then((data) => {
-        alert("incription réussie. Pour continuer, merci de vous connecter ");
-        
+        // alert("incription réussie. Pour continuer, merci de vous connecter ");
+        setMember(false);
+        history.push('/login');
       });
   };
 
@@ -23,12 +24,16 @@ function SignUp({ member, setMember }) {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const onClick = () => {
+    setMember(false);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (user.user_name && user.firstname && user.email && user.password) {
+      
       SignUp(user);
-      setMember(!member);
-      history.push('/login');
+      
     } else {
       alert("veuillez remplir tous les champs d'inscription.");
     }
@@ -90,6 +95,7 @@ function SignUp({ member, setMember }) {
           ></input>
         </label>
       </form>
+      <Link to="/login"><p onClick={()=> onClick()}>login</p></Link>
     </div>
   );
 }

@@ -40,7 +40,7 @@ function Login({ member, setMember }) {
   };
 
   const onClick = () => {
-    setMember(!member);
+    setMember(true);
   };
 
   return (

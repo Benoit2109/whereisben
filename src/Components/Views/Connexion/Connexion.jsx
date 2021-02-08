@@ -16,10 +16,10 @@ function Connexion() {
           .then((res) => {
             setCities(res);
           });
-      }, []);
+      }, [member]);
   return (
     <div className={styles.connexion_wrapper}>
-      {member ? <SignUp setMember={setMember}/> : <Login setMember={setMember} /> }
+      {member ? <SignUp setMember={setMember} /> : <Login setMember={setMember} /> }
     </div>
   );
 }

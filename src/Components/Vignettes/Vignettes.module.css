@@ -15,9 +15,9 @@
 
 .vignetteIllustration {
   max-width: 90%;
-  height: 25vh;
+  height: 30vh;
   background: cover;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   position: center;
   object-fit:cover;
 }
@@ -45,5 +45,9 @@
   .vignettesWrapper{
     max-height: 90vh;
     max-width: 25vw;
+  }
+
+  .vignetteIllustration {
+    height: 25vh;
   }
 } ;

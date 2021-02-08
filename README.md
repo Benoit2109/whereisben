@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# whereisben
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description du projet.  
 
-## Available Scripts
+WHEREISBEN? est un site qui me permet de 'punaiser' sur une carte les villes du monde que j'ai pu visiter. Je peux visualiser via une liste déroulante les informations de ma visite ainsi qu'une photo d'illustration personnalisée. Via le paneau d'administration, je peux ajouter ou supprimer une ville.
 
-In the project directory, you can run:
+<div style="text-align:center"><img src="https://i.imgur.com/BfwbRV9.jpg" /></div>
 
-### `npm start`
+## Contexte.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+En formation de développeur web à la _WILD CODE SCHOOL_ de Nantes, j'ai conçu ce site après 5 mois de formation. Il représente 40 heures de travail partagées entre front et back.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Fonctionnalités.  
 
-### `npm test`
+* Inscription / connexion / deconnexion
+* Lecture de vidéo youtube.
+* Visualiser les destinations sur une carte.
+* Rechercher et filtrer une destination par son pays ou sa ville.
+* Ajouter une ville.
+* Supprimer une ville.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Outils et ressources.  
 
-### `npm run build`
+Le site est réalisé avec __REACT__, __JAVASCRIPT__, le css est en __MODULE.CSS__. 
+La carte utilise __LEAFLET__ et __REACT LEAFLET__, le lecteur video __REACT PLAYER__.
+La gestion du back est réalisé avec __NODE.JS__ et __EXPRESS__, la gestion de l'authentification est faite par __JWT__.
+L'appel à l'__API__ se fait via __AXIOS__  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## L'équipe.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Benoit Le Bourdonnec [Github](https://github.com/Benoit2109) [Linkedin](https://www.linkedin.com/in/benoit-le-bourdonnec/)

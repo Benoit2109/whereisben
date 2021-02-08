@@ -18,7 +18,7 @@ export default function AddCity({ newcity, setNewcity }) {
   };
   // je récupère toutes les valeurs de mes champs pour les insérer dans mon objet newCity.
   const onChange = (e) => {
-    setNewcity({ ...newcity, [e.target.name]: e.target.value });
+    setNewcity({ ...newcity, [e.target.name]: e.target.value.toLowerCase() });
   };
 
   const onSubmit = (e) => {

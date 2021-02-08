@@ -6,7 +6,7 @@ import styles from "./AdminPanel.module.css";
 import AddCity from "../../AddCity/AddCity";
 import Autocomplete from "../../Autocomplete/Autocomplete";
 import CityList from "../../CityList/CityList";
-import { CitiesContext } from "../../Context/CitiesContext";
+import { CitiesContext } from "../../../Context/CitiesContext";
 
 function AdminPanel() {
   const { setCities} = useContext(CitiesContext)

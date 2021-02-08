@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import axios from "axios";
 import {useHistory} from 'react-router-dom';
 import PropTypes from "prop-types";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../../Context/UserContext";
 import styles from "./SignUp.module.css";
 
 function SignUp({ member, setMember }) {
@@ -27,6 +27,7 @@ function SignUp({ member, setMember }) {
     e.preventDefault();
     if (user.user_name && user.firstname && user.email && user.password) {
       SignUp(user);
+      setMember(!member);
       history.push('/login');
     } else {
       alert("veuillez remplir tous les champs d'inscription.");

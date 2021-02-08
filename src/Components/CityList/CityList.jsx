@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext } from "react";
-import { CitiesContext } from "../Context/CitiesContext";
+import { CitiesContext } from "../../Context/CitiesContext";
 
 import styles from "./CityList.module.css";
 

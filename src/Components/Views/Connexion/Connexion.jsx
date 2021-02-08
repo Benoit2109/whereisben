@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { CitiesContext } from "../../Context/CitiesContext";
+import { CitiesContext } from "../../../Context/CitiesContext";
 import axios from "axios";
 import Login from "../../Login/Login";
 import SignUp from "../../Signup/SignUp";

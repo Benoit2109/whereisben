@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { CitiesContext } from "../../Context/CitiesContext";
+import { CitiesContext } from "../../../Context/CitiesContext";
 import Map from "../../Map/Map";
 import SearchBar from "../../SearchBar/SearchBar";
 import Vignettes from "../../Vignettes/Vignettes";

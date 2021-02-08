@@ -2,9 +2,20 @@ import React from "react";
 
 import styles from "./Vignettes.module.css";
 
-import cityPropType from "../propTypes/CityProptypes";
+import cityPropType from "../../propTypes/CityProptypes";
 
 export default function Vignettes({ city }) {
+
+  const capitalizeFirstLetters = (input) =>
+  input.length > 0
+    ? input
+        .split(" ")
+        .map((e) => e[0].toUpperCase() + e.slice(1))
+        .join(" ")
+    : "";
+
+    const City = capitalizeFirstLetters(city.city_name);
+    const Country = capitalizeFirstLetters(city.country_name)
   return (
     <div className={styles.vignettesWrapper}>
       <div className={styles.vignetteContainer} key={city.id}>
@@ -15,11 +26,11 @@ export default function Vignettes({ city }) {
         />
         <div className={styles.vignetteInfos}>
           <p>
-            <strong>Pays:</strong> {city.country_name}
+            <strong>Pays:</strong> {Country}
           </p>
           <p>
             <strong>Ville visitée: </strong>
-            {city.city_name}
+            {City}
           </p>
           <p>
             <strong>Dernière visite:</strong> {city.last_visited}

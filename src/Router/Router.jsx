@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import MainLayout from "../Layout/mainLayout";
-import AdminPanel from "../Views/AdminPanel/AdminPanel";
-import Connexion from "../Views/Connexion/Connexion";
-import Exploring from "../Views/Exploring/Exploring";
-import Homepage from "../Views/Homepage/Homepage";
+import MainLayout from "../Components/Layout/mainLayout";
+import AdminPanel from "../Components/Views/AdminPanel/AdminPanel";
+import Connexion from "../Components/Views/Connexion/Connexion";
+import Exploring from "../Components/Views/Exploring/Exploring";
+import Homepage from "../Components/Views/Homepage/Homepage";
 
 
 const Root = () => (

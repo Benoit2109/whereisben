@@ -4,9 +4,6 @@ import styles from "./SearchBar.module.css";
 
 function SearchBar({citysearch, setCitysearch}) {
   
-
-   
-
   const handleChange = (e) => {
     setCitysearch(e.target.value);
     

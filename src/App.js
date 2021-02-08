@@ -1,7 +1,7 @@
 import React from "react";
-import CitiesProvider from "./Components/Context/CitiesContext";
-import UserProvider from "./Components/Context/UserContext";
-import Root from "./Components/Router/Router";
+import CitiesProvider from "./Context/CitiesContext";
+import UserProvider from "./Context/UserContext";
+import Root from "./Router/Router";
 
 function App() {
   return (

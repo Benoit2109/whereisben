@@ -6,7 +6,7 @@ import styles from "./AdminPanel.module.css";
 import AddCity from "../../AddCity/AddCity";
 import Autocomplete from "../../Autocomplete/Autocomplete";
 import CityList from "../../CityList/CityList";
-import { CitiesContext } from "../../Context/CitiesContext";
+import { CitiesContext } from "../../../Context/CitiesContext";
 
 function AdminPanel() {
   const { setCities} = useContext(CitiesContext)
@@ -21,14 +21,15 @@ function AdminPanel() {
     nb_visited: "",
   });
   // je rafraichi mon contexte en rappelant l'api lorsque la liste des villes est actualisée.
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_BDD}cities`)
-      .then((res) => res.data)
-      .then((res) => {
-        setCities(res);
-      });
-  }, [setCities]);
+  const id = localStorage.getItem("ID");
+    useEffect(() => {
+       id && axios
+          .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`)
+          .then((res) => res.data)
+          .then((res) => {
+            setCities(res);
+          });
+      }, []);
 
   return (
     <div className={styles.adminpanel_container}>

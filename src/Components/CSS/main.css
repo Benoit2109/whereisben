@@ -21,6 +21,10 @@ a{
   cursor:pointer;
 }
 
+a:visited{
+  color:white;
+}
+
 input{
   outline: none;
 }

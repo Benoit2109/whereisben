@@ -2,13 +2,13 @@
 
 ## Description du projet.  
 
-WHEREISBEN? est une site qui me permet de 'punaiser' sur une carte les villes du monde que j'ai pu visiter. Je peux visualiser via une liste déroulante els informations de ma visite ainsi qu'une photo d'illustration personnalisée. Via le paneau d'administration, je peux ajouter ou supprrimer une ville.
+WHEREISBEN? est un site qui me permet de 'punaiser' sur une carte les villes du monde que j'ai pu visiter. Je peux visualiser via une liste déroulante les informations de ma visite ainsi qu'une photo d'illustration personnalisée. Via le paneau d'administration, je peux ajouter ou supprimer une ville.
 
 <div style="text-align:center"><img src="https://i.imgur.com/BfwbRV9.jpg" /></div>
 
 ## Contexte.  
 
-En formation de développeur web à la _WILD CODE SCHOOL_ de Nantes, j'ai conçu ce site après 5 mois de formation. Il représente 40 heures de travail partagé entre front et back.
+En formation de développeur web à la _WILD CODE SCHOOL_ de Nantes, j'ai conçu ce site après 5 mois de formation. Il représente 40 heures de travail partagées entre front et back.
 
 ## Fonctionnalités.  
 

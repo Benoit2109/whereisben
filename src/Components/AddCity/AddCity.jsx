@@ -56,10 +56,13 @@ export default function AddCity({ newcity, setNewcity }) {
       })
       .then((res) => res.data)
       .then((res) => {
-        alert("La ville à bien été ajouté !");
+        setOpen(true);
+        setError(false);
       })
       .catch((e) => {
         console.error(e.message);
+        setOpen(true);
+        setError(true);
       });
     // je réinitialise mon objet newCity à null pour ajouter une nouvelle ville.
     setNewcity({

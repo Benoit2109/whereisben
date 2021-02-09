@@ -18,8 +18,11 @@
     background-color: transparent;
     height: 40px;
     width: auto;
+    padding: 0.5rem;
     border-radius: 5px;
     cursor:pointer;
+    transform:translateY(-.5rem);
+    position:fixed;
 }
 
 .menuGlobe{

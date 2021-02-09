@@ -1,11 +1,15 @@
 import axios from "axios";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CitiesContext } from "../../Context/CitiesContext";
 
 import styles from "./CityList.module.css";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 function CityList() {
   const { cities } = useContext(CitiesContext);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
 
   const deleteCity = (id) => {
     axios
@@ -16,11 +20,21 @@ function CityList() {
       })
       .then((res) => res.data)
       .then((res) => {
-        alert("ville supprimée avec succès !");
+        setOpen(true);
+        setError(false);
       })
       .catch((e) => {
-        console.error(e.message);
+        setOpen(true);
+        setError(true);
       });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
   };
 
   return (
@@ -44,6 +58,21 @@ function CityList() {
           </button>
         </div>
       ))}
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        open={open}
+        autoHideDuration={2500}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity={error ? "warning" : "success"}>
+          {error
+            ? "une erreur s'est produite..."
+            : "🗑 Ville supprimée avec succès!"}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

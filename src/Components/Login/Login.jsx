@@ -40,9 +40,9 @@ function Login({ member, setMember }) {
         .then((data) => {
           localStorage.setItem("ID", data.user.id);
           localStorage.setItem("TOKEN", data.token);
+          setOpen(true);
+          setError(false);
           setTimeout(() => {
-            setOpen(true);
-            setError(false);
             history.push("/exploring");
           }, 500);
         })
@@ -112,7 +112,9 @@ function Login({ member, setMember }) {
         onClose={handleClose}
       >
         <Alert onClose={handleClose} severity={error ? "warning" : "success"}>
-          {error ? "Veuillez compléter tous les champs!" : "Connexion réussie!"}
+          {error
+            ? "📝 Veuillez compléter tous les champs!"
+            : "✅ Connexion réussie!"}
         </Alert>
       </Snackbar>
     </div>

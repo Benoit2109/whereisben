@@ -188,7 +188,7 @@ export default function AddCity({ newcity, setNewcity }) {
         <Alert onClose={handleClose} severity={error ? "warning" : "success"}>
           {error
             ? "Veuillez compléter tous les champs!"
-            : "Ville ajoutée avec succès!"}
+            : "📬 Ville ajoutée avec succès!"}
         </Alert>
       </Snackbar>
     </div>

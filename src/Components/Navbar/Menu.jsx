@@ -80,7 +80,7 @@ export default function Menu() {
         onClose={handleClose}
       >
         <Alert onClose={handleClose} severity="success">
-          {"Vous êtes déconnecté."}
+          {"🚨 Vous êtes déconnecté."}
         </Alert>
       </Snackbar>
     </div>

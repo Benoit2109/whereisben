@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import styles from "./Searchbar.module.css";
 
-function SearchBar() {
-  const [citysearch, setCitysearch] = useState("");
-
+function SearchBar({ citysearch, setCitysearch }) {
   const handleChange = (e) => {
     setCitysearch(e.target.value);
-    
   };
 
   return (
@@ -25,3 +23,8 @@ function SearchBar() {
 }
 
 export default SearchBar;
+
+SearchBar.Proptype = {
+  citysearch: PropTypes.object.isRequired,
+  setCitysearch: PropTypes.func.isRequired,
+}

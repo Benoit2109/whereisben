@@ -4,13 +4,12 @@ import styles from "./Menu.module.css";
 
 import globe from "../../Assets/globe_menu.png";
 import globeConnected from "../../Assets/globeGreen_menu.png";
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 export default function Menu() {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
-    const [error, setError] = useState(false);
 
   const openMenu = () => {
     setActive(!active);
@@ -19,7 +18,7 @@ export default function Menu() {
   const deconnect = () => {
     localStorage.removeItem("TOKEN");
     localStorage.removeItem("ID");
-    setOpen(true)
+    setOpen(true);
   };
 
   const handleClose = () => {

@@ -7,7 +7,7 @@ import Vignettes from "../../Vignettes/Vignettes";
 import styles from "./Exploring.module.css";
 
 export default function Exploring() {
-  const [citysearch, setCitysearch] = useState("");
+  const [citysearch , setCitysearch] = useState("");
   const { setCities } = useContext(CitiesContext);
   const [cityLoop, setcityLoop] = useState([]);
 

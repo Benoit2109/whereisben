@@ -72,7 +72,7 @@ export default function AddCity({ newcity, setNewcity }) {
       longitude: "",
       photo: "",
       last_visited: "",
-      nb_visited: "",
+      nb_visited: " ",
     });
   };
 

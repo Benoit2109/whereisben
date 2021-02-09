@@ -45,7 +45,7 @@ export default function Menu() {
                 
               </p>
             ) : (
-              <strong>"Connexion / Inscription"</strong>
+              <strong>Connexion / Inscription</strong>
             )}
           </Link>
         </li>

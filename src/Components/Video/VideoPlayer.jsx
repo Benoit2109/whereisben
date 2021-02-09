@@ -10,7 +10,7 @@ export default function VideoPlayer() {
         className={styles.Video}
         url="https://www.youtube.com/watch?v=-26CN-t1fMw&t=1s"
         width="100%"
-        height="100%"
+        height="80vh"
       />
     </div>
   );

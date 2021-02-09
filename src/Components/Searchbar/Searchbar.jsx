@@ -22,5 +22,6 @@ function SearchBar() {
     </div>
   );
 }
+// j'essaie de faire fonctionner ce composant.
 
 export default SearchBar;

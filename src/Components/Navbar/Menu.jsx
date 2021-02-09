@@ -4,9 +4,13 @@ import styles from "./Menu.module.css";
 
 import globe from "../../Assets/globe_menu.png";
 import globeConnected from "../../Assets/globeGreen_menu.png";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 export default function Menu() {
   const [active, setActive] = useState(false);
+  const [open, setOpen] = useState(false);
+    const [error, setError] = useState(false);
 
   const openMenu = () => {
     setActive(!active);
@@ -15,8 +19,16 @@ export default function Menu() {
   const deconnect = () => {
     localStorage.removeItem("TOKEN");
     localStorage.removeItem("ID");
-    alert("Disconnected successfully");
+    setOpen(true)
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
   return (
     <div className={styles.menuWrapper}>
@@ -41,8 +53,8 @@ export default function Menu() {
         <li className={styles.menuListItem} onClick={openMenu}>
           <Link className={styles.menuLink} to="/login">
             {localStorage.getItem("TOKEN") ? (
-              <p className={styles.menuP} onClick={() => deconnect()}><strong>Deconnexion</strong>
-                
+              <p className={styles.menuP} onClick={() => deconnect()}>
+                <strong>Deconnexion</strong>
               </p>
             ) : (
               <strong>Connexion / Inscription</strong>
@@ -51,14 +63,27 @@ export default function Menu() {
         </li>
         {localStorage.getItem("TOKEN") ? (
           <li className={styles.menuListItem} onClick={openMenu}>
-            <Link className={styles.menuLink} to="/addcity"><strong>Add new city</strong>
-              
+            <Link className={styles.menuLink} to="/addcity">
+              <strong>Add new city</strong>
             </Link>
           </li>
         ) : (
           ""
         )}
       </ul>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        open={open}
+        autoHideDuration={2500}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success">
+          {"Vous êtes déconnecté."}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import styles from "./AddCity.module.css";
 import { Link } from "react-router-dom";
 
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
 export default function AddCity({ newcity, setNewcity }) {
   const userId = localStorage.getItem("ID");
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
   // je récupère le fichier image contenu dans l'input type file.
   // je l'insère dans l'objet Newcity.
   const onchangePhoto = (e) => {
@@ -18,6 +23,14 @@ export default function AddCity({ newcity, setNewcity }) {
   // je récupère toutes les valeurs de mes champs pour les insérer dans mon objet newCity.
   const onChange = (e) => {
     setNewcity({ ...newcity, [e.target.name]: e.target.value.toLowerCase() });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
   };
 
   const onSubmit = (e) => {
@@ -43,10 +56,13 @@ export default function AddCity({ newcity, setNewcity }) {
       })
       .then((res) => res.data)
       .then((res) => {
-        alert("La ville à bien été ajouté !");
+        setOpen(true);
+        setError(false);
       })
       .catch((e) => {
         console.error(e.message);
+        setOpen(true);
+        setError(true);
       });
     // je réinitialise mon objet newCity à null pour ajouter une nouvelle ville.
     setNewcity({
@@ -160,6 +176,21 @@ export default function AddCity({ newcity, setNewcity }) {
           Afficher sur la carte
         </button>
       </Link>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        open={open}
+        autoHideDuration={2500}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity={error ? "warning" : "success"}>
+          {error
+            ? "Veuillez compléter tous les champs!"
+            : "Ville ajoutée avec succès!"}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

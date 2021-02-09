@@ -1,22 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
-import {Link, useHistory} from 'react-router-dom';
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UserContext } from "../../Context/UserContext";
+
 import styles from "./SignUp.module.css";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 function SignUp({ setMember }) {
   let history = useHistory();
   const { user, setUser } = useContext(UserContext);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
 
   const SignUp = (user) => {
     axios
       .post(`${process.env.REACT_APP_API_BDD}users/newuser`, user)
       .then((res) => res.data)
       .then((data) => {
-        // alert("incription réussie. Pour continuer, merci de vous connecter ");
+        setOpen(true);
+        setError(false);
         setMember(false);
-        history.push('/login');
+        history.push("/login");
       });
   };
 
@@ -28,14 +34,21 @@ function SignUp({ setMember }) {
     setMember(false);
   };
 
+  const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (user.user_name && user.firstname && user.email && user.password) {
-      
       SignUp(user);
-      
     } else {
-      alert("veuillez remplir tous les champs d'inscription.");
+      setOpen(true);
+      setError(true);
     }
   };
   return (
@@ -95,7 +108,24 @@ function SignUp({ setMember }) {
           ></input>
         </label>
       </form>
-      <Link to="/login"><p onClick={()=> onClick()}>login</p></Link>
+      <Link to="/login">
+        <p onClick={() => onClick()}>login</p>
+      </Link>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        open={open}
+        autoHideDuration={2500}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity={error ? "warning" : "success"}>
+          {error
+            ? "Veuillez compléter tous les champs!"
+            : "Inscription réussie! Connectez-vous..."}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

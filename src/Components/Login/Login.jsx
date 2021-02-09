@@ -1,16 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import styles from "./Login.module.css";
 import { UserContext } from "../../Context/UserContext";
 import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 function Login({ member, setMember }) {
   let history = useHistory();
   const { user, setUser } = useContext(UserContext);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
 
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const onSubmit = (e) => {
@@ -29,13 +41,15 @@ function Login({ member, setMember }) {
           localStorage.setItem("ID", data.user.id);
           localStorage.setItem("TOKEN", data.token);
           setTimeout(() => {
-            alert("logged Successfully");
+            setOpen(true);
+            setError(false);
             history.push("/exploring");
           }, 500);
         })
         .catch((err) => console.log(err.response.data.errormessage));
     } else {
-      alert("Remplissez tous les champs de connexion");
+      setOpen(true);
+      setError(true);
     }
   };
 
@@ -88,6 +102,19 @@ function Login({ member, setMember }) {
           <p>Vous n'avez pas de compte?</p>
         </Link>
       </div>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        open={open}
+        autoHideDuration={2500}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity={error ? "warning" : "success"}>
+          {error ? "Veuillez compléter tous les champs!" : "Connexion réussie!"}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

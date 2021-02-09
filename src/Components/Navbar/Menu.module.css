@@ -48,7 +48,7 @@
     background-color: var(--main-color-navbar);
     height: fit-content;
     padding: 1rem;
-    transform: translateY(-1rem);
+    transform: translateY(-1.2rem);
 }
 
 .menuListItem{
@@ -66,12 +66,13 @@
         opacity: 1;
         background-color: var(--main-color-navbar);
         height: fit-content;
-        transform: translateY(1.55rem);
+        transform: translateY(1.75rem);
         padding: 1rem;
     }
 
     .menuButton {
         margin-right: 2rem;
+        transform: translateY(0rem);
     }
 
     .menuGlobe{

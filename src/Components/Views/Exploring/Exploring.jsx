@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { CitiesContext } from "../../../Context/CitiesContext";
 import Map from "../../Map/Map";
-import SearchBar from "../../Searchbar/SearchBar";
+import SearchBar from "../../SearchBar/SearchBar";
 import Vignettes from "../../Vignettes/Vignettes";
 import styles from "./Exploring.module.css";
 

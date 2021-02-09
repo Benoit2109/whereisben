@@ -24,7 +24,6 @@ export default function Exploring() {
         .then((res) => {
           setcityLoop(res);
           setCities(res);
-          console.log(res);
         });
   }, []);
 

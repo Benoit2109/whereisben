@@ -20,8 +20,8 @@
     width: auto;
     padding: 0.5rem;
     border-radius: 5px;
-    cursor:pointer;
-    transform:translateY(-1rem);
+    cursor: pointer;
+    transform: translateY(-1rem);
 }
 
 .menuGlobe{
@@ -35,19 +35,20 @@
 }
 
 .menuList{
-    opacity:0;
+    opacity: 0;
     visibility: hidden;
     transition: all 0.25s ease-in-out;
-    height:0;
+    height: 0;
     border-radius: 0 0 5px 5px;
 }
 
 .menuOpen{
-    opacity:1;
-    visibility:visible;
+    opacity: 1;
+    visibility: visible;
     background-color: var(--main-color-navbar);
     height: fit-content;
     padding: 1rem;
+    transform: translateY(-1rem);
 }
 
 .menuListItem{
@@ -57,15 +58,15 @@
 }
 
 .menuP{
-    margin:0;
+    margin: 0;
 }
 
 @media screen and (min-width: 768px){
     .menuOpen{
-        opacity:1;
+        opacity: 1;
         background-color: var(--main-color-navbar);
         height: fit-content;
-        transform:translateY(0.55rem);
+        transform: translateY(1.55rem);
         padding: 1rem;
     }
 

@@ -1,6 +1,7 @@
 .adminpanel_container {
   background-image: url(../../../Assets/Planisphere-Mural_OriginalMap.jpg);
   height: 80vh;
+  margin-top: 3rem;
 }
 
 .adminpanel_wrapper {

@@ -6,7 +6,7 @@ function SearchBar() {
 
   const handleChange = (e) => {
     setCitysearch(e.target.value);
-    console.log('coucou');
+    
   };
 
   return (

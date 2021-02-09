@@ -1,27 +1,25 @@
-.searchbar_wrapper{
-    width: 90vw;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.searchbar_wrapper {
+  width: 90vw;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.searchbar{
-    width: 90vw;
-    height: 2rem;
-    border-radius: 20px;
-    outline: none;
-    padding-left: 1rem;
-    font-size: 1rem;
-    border: solid 2px var(--main-color-navbar);
+.searchbar {
+  width: 90vw;
+  height: 2rem;
+  border-radius: 20px;
+  outline: none;
+  padding-left: 1rem;
+  font-size: 1rem;
+  border: solid 2px var(--main-color-navbar);
 }
 
 @media screen and (min-width: 768px) {
+  .searchbar_wrapper {
+    width: 22vw;
+  }
 
-    .searchbar_wrapper{
-        width: 22vw;
-
-    }
-
-    .searchbar{
-        width: 22vw;
-    }
+  .searchbar {
+    width: 22vw;
+  }
 }

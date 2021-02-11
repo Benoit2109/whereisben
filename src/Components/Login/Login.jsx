@@ -26,6 +26,7 @@ function Login({ member, setMember }) {
   };
 
   const onSubmit = (e) => {
+    console.log("onSubmit");
     e.preventDefault();
     const email = user.email;
     const password = user.password;

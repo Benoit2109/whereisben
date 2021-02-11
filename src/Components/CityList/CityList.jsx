@@ -15,7 +15,7 @@ function CityList() {
     axios
       .delete(`${process.env.REACT_APP_API_BDD}cities/${id}`, {
         headers: {
-          Authorization: `bearer ${localStorage.getItem("TOKEN")}`, "Access-Control-Allow-Origin": "*"
+          Authorization: `bearer ${localStorage.getItem("TOKEN")}`, "Access-Control-Allow-Origin": "https://wherethehellisben.netlify.app/addcity"
         },
       })
       .then((res) => res.data)

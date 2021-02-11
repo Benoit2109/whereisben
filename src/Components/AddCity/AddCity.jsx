@@ -52,6 +52,7 @@ export default function AddCity({ newcity, setNewcity }) {
       .post(`${process.env.REACT_APP_API_BDD}cities/newcity`, data, {
         headers: {
           Authorization: `bearer ${localStorage.getItem("TOKEN")}`,
+          "Access-Control-Allow-Origin": "*",
         },
       })
       .then((res) => res.data)

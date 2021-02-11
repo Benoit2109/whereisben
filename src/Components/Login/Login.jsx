@@ -32,10 +32,14 @@ function Login({ member, setMember }) {
 
     if (email && password) {
       axios
-        .post(`${process.env.REACT_APP_API_BDD}users/login`, {
-          email,
-          password,
-        })
+        .post(
+          `${process.env.REACT_APP_API_BDD}users/login`,
+          {
+            email,
+            password,
+          },
+          { headers: { "Access-Control-Allow-Origin": "*" } }
+        )
         .then((res) => res.data)
         .then((data) => {
           localStorage.setItem("ID", data.user.id);

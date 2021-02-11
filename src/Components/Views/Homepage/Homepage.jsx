@@ -14,6 +14,7 @@ export default function Homepage() {
         .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`, {
           headers: {
             Authorization: `bearer ${localStorage.getItem("TOKEN")}`,
+            "Access-Control-Allow-Origin": "*",
           },
         })
         .then((res) => res.data)

@@ -7,7 +7,7 @@ import Vignettes from "../../Vignettes/Vignettes";
 import styles from "./Exploring.module.css";
 
 export default function Exploring() {
-  const [citysearch , setCitysearch] = useState("");
+  const [citysearch, setCitysearch] = useState("");
   const { setCities } = useContext(CitiesContext);
   const [cityLoop, setcityLoop] = useState([]);
 
@@ -18,6 +18,7 @@ export default function Exploring() {
         .get(`${process.env.REACT_APP_API_BDD}cities/user/${id}`, {
           headers: {
             Authorization: `bearer ${localStorage.getItem("TOKEN")}`,
+            "Access-Control-Allow-Origin": "*",
           },
         })
         .then((res) => res.data)

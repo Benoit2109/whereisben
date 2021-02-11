@@ -15,7 +15,7 @@ function CityList() {
     axios
       .delete(`${process.env.REACT_APP_API_BDD}cities/${id}`, {
         headers: {
-          Authorization: `bearer ${localStorage.getItem("TOKEN")}`,
+          Authorization: `bearer ${localStorage.getItem("TOKEN")}`, "Access-Control-Allow-Origin": "*"
         },
       })
       .then((res) => res.data)

@@ -26,7 +26,6 @@ function Login({ member, setMember }) {
   };
 
   const onSubmit = (e) => {
-    console.log("onSubmit");
     e.preventDefault();
     const email = user.email;
     const password = user.password;
@@ -43,6 +42,7 @@ function Login({ member, setMember }) {
         )
         .then((res) => res.data)
         .then((data) => {
+          console.log(data)
           localStorage.setItem("ID", data.user.id);
           localStorage.setItem("FIRSTNAME", data.user.firstname);
           localStorage.setItem("TOKEN", data.token);

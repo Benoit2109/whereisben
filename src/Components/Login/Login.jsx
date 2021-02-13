@@ -44,6 +44,7 @@ function Login({ member, setMember }) {
         .then((res) => res.data)
         .then((data) => {
           localStorage.setItem("ID", data.user.id);
+          localStorage.setItem("FIRSTNAME", data.user.firstname);
           localStorage.setItem("TOKEN", data.token);
           setOpen(true);
           setError(false);

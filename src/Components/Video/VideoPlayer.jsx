@@ -8,7 +8,7 @@ export default function VideoPlayer() {
     <div className={styles.videoContainer}>
       <ReactPlayer
         className={styles.Video}
-        url="https://www.youtube.com/watch?v=-26CN-t1fMw&t=1s"
+        url="https://www.youtube.com/watch?v=8YEPbymhGhU"
         width="100%"
         height="80vh"
       />

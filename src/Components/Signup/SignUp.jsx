@@ -22,7 +22,7 @@ function SignUp({ setMember }) {
         setOpen(true);
         setError(false);
         setMember(false);
-        setTimeout(history.push("/login"), 500);
+        setTimeout(()=> {history.push("/login")}, 500);
       });
   };
 

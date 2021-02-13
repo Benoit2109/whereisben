@@ -52,7 +52,7 @@ function Login({ member, setMember }) {
             history.push("/exploring");
           }, 500);
         })
-        .catch((err) => console.log(err.response.data.errormessage));
+        .catch((err) => console.log(err));
     } else {
       setOpen(true);
       setError(true);

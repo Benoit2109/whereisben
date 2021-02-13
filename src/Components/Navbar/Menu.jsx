@@ -18,6 +18,7 @@ export default function Menu() {
   const deconnect = () => {
     localStorage.removeItem("TOKEN");
     localStorage.removeItem("ID");
+    localStorage.removeItem("FIRSTNAME");
     setOpen(true);
   };
 
